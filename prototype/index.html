@@ -84,7 +84,7 @@
                 <h1 class="font-extrabold text-lg text-white flex items-center gap-2">
                     AFTER HOURS <span class="bg-orange-600/20 text-orange-400 text-xs font-semibold px-2 py-0.5 rounded-full border border-orange-500/30">PROTOTYPE</span>
                 </h1>
-                <p class="text-xs text-zinc-400">Interactive User Story & Viewport Simulator</p>
+                <p class="text-xs text-zinc-400">Independent portfolio concept • Not affiliated with Netflix</p>
             </div>
         </div>
 
@@ -94,10 +94,10 @@
                 <i data-lucide="moon" class="w-3.5 h-3.5"></i> US-01: Timer Setup
             </button>
             <button onclick="switchStory('US-02')" id="btn-us2" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 text-zinc-400 hover:text-white">
-                <i data-lucide="sliders" class="w-3.5 h-3.5"></i> US-02: Dimming & Audio
+                <i data-lucide="sliders" class="w-3.5 h-3.5"></i> US-02: Stop Transition
             </button>
             <button onclick="switchStory('US-03')" id="btn-us3" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 text-zinc-400 hover:text-white">
-                <i data-lucide="bookmark" class="w-3.5 h-3.5"></i> US-03: Sleep Recovery
+                <i data-lucide="bookmark" class="w-3.5 h-3.5"></i> US-03: Resume Choice
             </button>
         </div>
 
@@ -143,7 +143,7 @@
                             </button>
                             <div>
                                 <span class="text-xs font-bold text-orange-500 tracking-wider uppercase flex items-center gap-1">
-                                    <i data-lucide="moon" class="w-3 h-3"></i> Night Stream Mode
+                                    <i data-lucide="moon" class="w-3 h-3"></i> After Hours Concept
                                 </span>
                                 <h2 id="player-title" class="text-lg md:text-xl font-bold text-white">Stranger Things — S4:E9 "The Piggyback"</h2>
                             </div>
@@ -219,13 +219,13 @@
                                     <i data-lucide="x" class="w-5 h-5"></i>
                                 </button>
                             </div>
-                            <p class="text-xs text-zinc-400">Select timer duration. Video display will dim to true black while audio fades out smoothly.</p>
+                            <p class="text-xs text-zinc-400">Choose when playback should stop. An optional dimming transition previews the stop and a local checkpoint is saved for your next session.</p>
 
                             <!-- Timer Options Grid -->
                             <div class="grid grid-cols-2 gap-2.5 my-2">
                                 <button onclick="selectTimer('15m')" class="p-3 bg-zinc-900 border border-zinc-800 hover:border-orange-500 hover:bg-orange-950/40 text-white font-medium text-sm rounded-xl transition flex flex-col items-center gap-1">
                                     <span class="text-base font-bold text-orange-400">15 min</span>
-                                    <span class="text-[10px] text-zinc-500">Power Nap</span>
+                                    <span class="text-[10px] text-zinc-500">Short timer</span>
                                 </button>
                                 <button onclick="selectTimer('30m')" class="p-3 bg-zinc-900 border border-zinc-800 hover:border-orange-500 hover:bg-orange-950/40 text-white font-medium text-sm rounded-xl transition flex flex-col items-center gap-1">
                                     <span class="text-base font-bold text-orange-400">30 min</span>
@@ -233,26 +233,23 @@
                                 </button>
                                 <button onclick="selectTimer('45m')" class="p-3 bg-zinc-900 border border-zinc-800 hover:border-orange-500 hover:bg-orange-950/40 text-white font-medium text-sm rounded-xl transition flex flex-col items-center gap-1">
                                     <span class="text-base font-bold text-orange-400">45 min</span>
-                                    <span class="text-[10px] text-zinc-500">Deep Sleep</span>
+                                    <span class="text-[10px] text-zinc-500">Extended timer</span>
                                 </button>
                                 <button onclick="selectTimer('End of Ep')" class="p-3 bg-zinc-900 border border-zinc-800 hover:border-orange-500 hover:bg-orange-950/40 text-white font-medium text-sm rounded-xl transition flex flex-col items-center gap-1">
                                     <span class="text-base font-bold text-orange-400">End of Ep</span>
-                                    <span class="text-[10px] text-zinc-500">Finish Story</span>
+                                    <span class="text-[10px] text-zinc-500">Finish episode</span>
                                 </button>
                             </div>
 
-                            <!-- Wearable Auto Sync Option (Premium Tier) -->
-                            <div class="p-3 bg-gradient-to-r from-orange-950/40 to-zinc-900 border border-orange-500/30 rounded-xl flex items-center justify-between text-left">
+                            <!-- Evidence-backed pilot scope note -->
+                            <div class="p-3 bg-gradient-to-r from-orange-950/40 to-zinc-900 border border-orange-500/30 rounded-xl flex items-center text-left">
                                 <div class="flex items-center gap-2.5">
-                                    <i data-lucide="watch" class="w-5 h-5 text-orange-400"></i>
+                                    <i data-lucide="shield-check" class="w-5 h-5 text-orange-400"></i>
                                     <div>
-                                        <div class="text-xs font-bold text-white flex items-center gap-1">
-                                            Smart Wearable Sync <span class="bg-orange-500 text-black text-[9px] font-black px-1.5 py-0.2 rounded">PREMIUM</span>
-                                        </div>
-                                        <div class="text-[10px] text-zinc-400">Auto-detect sleep via Apple Watch / Oura</div>
+                                        <div class="text-xs font-bold text-white">Manual pilot control</div>
+                                        <div class="text-[10px] text-zinc-400">No wearable or health data is used in this concept flow.</div>
                                     </div>
                                 </div>
-                                <input type="checkbox" checked class="accent-orange-500 w-4 h-4 cursor-pointer">
                             </div>
                         </div>
                     </div>
@@ -271,7 +268,7 @@
                     <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
                         <div>
                             <span class="text-xs font-bold text-orange-500 uppercase tracking-widest">US-02 Simulator</span>
-                            <h2 class="text-xl font-bold text-white">Display Dimming & Audio Fading Engine</h2>
+                            <h2 class="text-xl font-bold text-white">Countdown & Controlled Stop Preview</h2>
                         </div>
                         <div class="flex items-center gap-2">
                             <span id="phase-badge" class="px-3 py-1 bg-green-500/20 text-green-400 border border-green-500/30 rounded-full text-xs font-semibold">
@@ -293,24 +290,21 @@
                             
                             <div class="grid grid-cols-2 gap-4">
                                 <div class="bg-zinc-900 p-3 rounded-xl border border-zinc-800">
-                                    <div class="text-[10px] text-zinc-500 uppercase">OLED Luminescence</div>
+                                    <div class="text-[10px] text-zinc-500 uppercase">Display brightness</div>
                                     <div id="telemetry-lum" class="text-xl font-black text-orange-400 font-mono">100%</div>
                                 </div>
                                 <div class="bg-zinc-900 p-3 rounded-xl border border-zinc-800">
-                                    <div class="text-[10px] text-zinc-500 uppercase">Audio Output Level</div>
-                                    <div id="telemetry-vol" class="text-xl font-black text-orange-400 font-mono">100%</div>
+                                    <div class="text-[10px] text-zinc-500 uppercase">Playback state</div>
+                                    <div id="telemetry-vol" class="text-xl font-black text-orange-400 font-mono">Playing</div>
                                 </div>
                             </div>
 
-                            <!-- Live Audio Waveform Graphic -->
+                            <!-- Viewer control guardrail -->
                             <div>
-                                <div class="text-[10px] text-zinc-500 uppercase mb-2">Frequency Cutoff Filter (&gt;8kHz Attenuated)</div>
-                                <div class="flex items-center justify-center gap-1.5 h-10 bg-zinc-950 rounded-xl p-2 border border-zinc-800">
-                                    <div class="w-1.5 bg-orange-500 rounded-full animate-wave"></div>
-                                    <div class="w-1.5 bg-orange-500 rounded-full animate-wave [animation-delay:0.2s]"></div>
-                                    <div class="w-1.5 bg-orange-500 rounded-full animate-wave [animation-delay:0.4s]"></div>
-                                    <div class="w-1.5 bg-orange-500 rounded-full animate-wave [animation-delay:0.1s]"></div>
-                                    <div class="w-1.5 bg-orange-500 rounded-full animate-wave [animation-delay:0.3s]"></div>
+                                <div class="text-[10px] text-zinc-500 uppercase mb-2">Viewer control guardrail</div>
+                                <div class="flex items-center justify-center gap-2 h-10 bg-zinc-950 rounded-xl p-2 border border-zinc-800 text-xs text-zinc-300">
+                                    <i data-lucide="gamepad-2" class="w-4 h-4 text-orange-400"></i>
+                                    Any remote or touch input cancels the stop transition
                                 </div>
                             </div>
                         </div>
@@ -327,14 +321,14 @@
 
                         <div class="grid grid-cols-3 gap-2 text-center text-[10px] font-semibold text-zinc-400">
                             <button onclick="setSimStep(0)" class="p-2 bg-zinc-950 rounded-lg hover:text-white border border-zinc-800">1. Normal Playback</button>
-                            <button onclick="setSimStep(50)" class="p-2 bg-zinc-950 rounded-lg hover:text-white border border-zinc-800">2. Phase 1: Video Dimming</button>
-                            <button onclick="setSimStep(100)" class="p-2 bg-zinc-950 rounded-lg hover:text-white border border-zinc-800">3. Phase 2: Audio Fade & Dark</button>
+                            <button onclick="setSimStep(50)" class="p-2 bg-zinc-950 rounded-lg hover:text-white border border-zinc-800">2. Countdown & Optional Dimming</button>
+                            <button onclick="setSimStep(100)" class="p-2 bg-zinc-950 rounded-lg hover:text-white border border-zinc-800">3. Checkpoint & Stop</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- ========================================== -->
-                <!-- VIEW 3: USER STORY 03 — SLEEP RECOVERY DASHBOARD -->
+                <!-- VIEW 3: USER STORY 03 — RESUME CHOICE -->
                 <!-- ========================================== -->
                 <div id="view-us3" class="hidden w-full h-full relative bg-zinc-950 flex flex-col overflow-y-auto">
                     <!-- Netflix Header Navbar -->
@@ -358,7 +352,7 @@
                     <!-- DASHBOARD CONTENT CONTAINER -->
                     <div class="p-6 flex flex-col gap-6">
                         
-                        <!-- PROMINENT SLEEP RECOVERY HERO BANNER (US-03 KEY SPEC) -->
+                        <!-- PROMINENT CHECKPOINT CHOICE BANNER (US-03 KEY SPEC) -->
                         <div class="w-full bg-gradient-to-r from-orange-950 via-zinc-900 to-black border-2 border-orange-500/50 rounded-2xl p-6 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6 group hover:border-orange-500 transition-all">
                             <!-- Background Subtle Glow -->
                             <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-orange-600/10 rounded-full blur-3xl"></div>
@@ -369,21 +363,21 @@
                                 </div>
                                 <div>
                                     <div class="flex items-center gap-2 mb-1">
-                                        <span class="bg-orange-600 text-white font-bold text-[10px] uppercase px-2 py-0.5 rounded">Sleep Recovery Point</span>
-                                        <span class="text-xs text-zinc-400">Auto-Bookmarked last night at 11:42 PM</span>
+                                        <span class="bg-orange-600 text-white font-bold text-[10px] uppercase px-2 py-0.5 rounded">After Hours Checkpoint</span>
+                                        <span class="text-xs text-zinc-400">Saved when your timer stopped playback at 11:42 PM</span>
                                     </div>
-                                    <h2 class="text-xl md:text-2xl font-black text-white">Fell asleep during Stranger Things?</h2>
-                                    <p class="text-xs text-zinc-300 mt-1">We saved your exact watch point right when your display started dimming at <span class="text-orange-400 font-mono font-bold">14:20</span> in Episode 3.</p>
+                                    <h2 class="text-xl md:text-2xl font-black text-white">Where would you like to resume?</h2>
+                                    <p class="text-xs text-zinc-300 mt-1">Your timer checkpoint is <span class="text-orange-400 font-mono font-bold">14:20</span> in Episode 3. Your standard playback position is still available.</p>
                                 </div>
                             </div>
 
                             <!-- Interactive Resume Actions -->
                             <div class="flex items-center gap-3 w-full md:w-auto z-10">
-                                <button onclick="resumeFromSleep()" class="flex-1 md:flex-none px-5 py-3 bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs md:text-sm rounded-xl shadow-lg shadow-orange-600/30 flex items-center justify-center gap-2 transition hover:scale-105">
-                                    <i data-lucide="play" class="w-4 h-4 fill-current"></i> Resume from 14:20
+                                <button onclick="resumeFromCheckpoint()" class="flex-1 md:flex-none px-5 py-3 bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs md:text-sm rounded-xl shadow-lg shadow-orange-600/30 flex items-center justify-center gap-2 transition hover:scale-105">
+                                    <i data-lucide="play" class="w-4 h-4 fill-current"></i> Use checkpoint 14:20
                                 </button>
-                                <button class="px-4 py-3 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-semibold text-xs md:text-sm rounded-xl transition">
-                                    Start Episode Over
+                                <button onclick="resumeFromStandardPosition()" class="px-4 py-3 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-semibold text-xs md:text-sm rounded-xl transition">
+                                    Use standard position 42:15
                                 </button>
                             </div>
                         </div>
@@ -576,7 +570,7 @@
                 // Phase 0: Normal
                 overlay.style.backgroundColor = 'rgba(0, 0, 0, 0)';
                 lumText.innerText = '100%';
-                volText.innerText = '100%';
+                volText.innerText = 'Playing';
                 timeLabel.innerText = 'T - 15:00 min remaining';
                 badge.className = 'px-3 py-1 bg-green-500/20 text-green-400 border border-green-500/30 rounded-full text-xs font-semibold';
                 badge.innerText = 'Phase 0: Normal Playback';
@@ -586,18 +580,17 @@
                 overlay.style.backgroundColor = `rgba(0, 0, 0, ${opacity * 0.85})`;
                 lumText.innerText = `${Math.round((1 - opacity) * 100)}%`;
                 volText.innerText = '100%';
-                timeLabel.innerText = 'T - 08:00 min (Video Dimming)';
+                timeLabel.innerText = 'T - 08:00 min (Countdown preview)';
                 badge.className = 'px-3 py-1 bg-orange-500/20 text-orange-400 border border-orange-500/30 rounded-full text-xs font-semibold';
-                badge.innerText = 'Phase 1: OLED Display Dimming';
+                badge.innerText = 'Phase 1: Optional Dimming';
             } else {
-                // Phase 2: Audio Fade & True Black
+                // Phase 2: Save checkpoint and stop playback
                 overlay.style.backgroundColor = 'rgba(0, 0, 0, 1)';
-                lumText.innerText = '0% (OLED Black)';
-                const volLevel = Math.max(15, Math.round((100 - val) * 2));
-                volText.innerText = `${volLevel}% (Low Pass)`;
-                timeLabel.innerText = 'T - 02:00 min (Audio Fade to Dark)';
+                lumText.innerText = '0% (Stopped)';
+                volText.innerText = 'Stopped';
+                timeLabel.innerText = 'T 00:00 (Checkpoint saved)';
                 badge.className = 'px-3 py-1 bg-red-500/20 text-red-400 border border-red-500/30 rounded-full text-xs font-semibold';
-                badge.innerText = 'Phase 2: Audio Fade & Shutdown';
+                badge.innerText = 'Phase 2: Controlled Stop';
             }
         }
 
@@ -607,10 +600,21 @@
         }
 
         // US-03 Functions
-        function resumeFromSleep() {
+        function resumeFromCheckpoint() {
             switchStory('US-01');
             const toast = document.getElementById('toast-notification');
-            document.getElementById('toast-text').innerText = 'Resumed from Sleep Point (14:20)';
+            document.getElementById('toast-text').innerText = 'Resumed from timer checkpoint (14:20)';
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3500);
+        }
+
+        function resumeFromStandardPosition() {
+            switchStory('US-01');
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-text').innerText = 'Resumed from standard position (42:15)';
             toast.classList.remove('hidden');
 
             setTimeout(() => {
