@@ -11,7 +11,7 @@
 | Technical implementation | Architecture proposal only |
 | UAT | Not started |
 | Deployment readiness | Not ready |
-| Current phase | Phase 2 complete - Gate 2 conditional pass recommended |
+| Current phase | Phase 3 - prototype evidence and feasibility in progress |
 
 ## Confirmed product principles
 
@@ -25,12 +25,20 @@
 
 Independent secondary research supports bedtime viewing as a credible context and manual timers as an established pattern. It does not validate the incidence of falling asleep during paid streaming, recovery-card value, unattended playback, retention, Premium conversion, or Netflix-specific savings.
 
-Gate 2 is therefore recommended as a conditional pass into a narrowed manual timer, checkpoint, and recovery pilot. Wearable triggers, advanced audio, therapeutic claims, fixed global activation windows, and quantified financial outcomes are excluded.
+Gate 2 was approved on 2026-11-08 as a conditional pass into a narrowed manual timer, checkpoint, and recovery pilot. Wearable triggers, advanced audio, therapeutic claims, fixed global activation windows, and quantified financial outcomes are excluded.
+
+## Phase 3 scope
+
+- Refactor the interactive prototype to the evidence-backed pilot.
+- Conduct an expert heuristic and accessibility review.
+- Evaluate local checkpoint persistence and recovery behaviour.
+- Specify a synthetic experiment event model and analysis approach.
+- Preserve the distinction between expert, simulated, secondary, and customer evidence.
 
 ## Decision gates
 
 - **Gate 1:** Approved. Research questions, hypotheses, and evidence standards established.
-- **Gate 2:** Conditional pass recommended. The context is credible and addressable; frequency, severity, and product desirability remain unvalidated.
+- **Gate 2:** Approved on 2026-11-08 as a conditional pass. The context is credible and addressable; frequency, severity, and product desirability remain unvalidated.
 - **Gate 3:** Confirm that pilot usability and technical feasibility have no critical blocker.
 - **Gate 4:** Confirm a positive value case under conservative assumptions.
 
