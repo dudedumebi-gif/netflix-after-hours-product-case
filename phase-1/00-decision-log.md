@@ -11,6 +11,7 @@
 | DEC-005 | The complete suite remains the long-term product vision. The first viable release will be a smaller pilot designed to produce an observable customer win. | Approved |
 | DEC-006 | Phase 1 begins with an evidence baseline and research governance before research execution. | Approved |
 | DEC-007 | The project will use a dedicated public GitHub repository and remain classified as a project in flight on the portfolio. | Approved |
+| DEC-008 | Gate 1 research questions, participant criteria, methods, evidence standards, and proposed decision thresholds are approved. | Approved - 2026-11-08 |
 
 ## Gate sequence
 
