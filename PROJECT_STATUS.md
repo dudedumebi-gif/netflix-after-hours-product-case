@@ -11,7 +11,7 @@
 | Technical implementation | Architecture proposal only |
 | UAT | Not started |
 | Deployment readiness | Not ready |
-| Next approved phase | Phase 1 - evidence baseline |
+| Current phase | Phase 1 - evidence baseline in progress |
 
 ## Confirmed product principles
 
@@ -23,7 +23,7 @@
 
 ## Phase 1 scope
 
-Phase 1 will establish the evidence foundation through:
+Phase 1 is establishing the evidence foundation through:
 
 - A research charter
 - A hypothesis and evidence register
