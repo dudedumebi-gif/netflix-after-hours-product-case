@@ -1,7 +1,7 @@
 # Netflix After Hours
 
 **Status:** Project in flight - concept and interactive prototype  
-**Current stage:** Phase 1 evidence baseline in progress  
+**Current stage:** Phase 2 secondary-evidence validation complete; Gate 2 pending approval  
 **Role:** AI Product Manager and product case author
 
 Netflix After Hours is an independent, portfolio-grade product innovation case exploring how a streaming service could improve the late-night viewing experience for people who fall asleep while watching.
@@ -18,8 +18,8 @@ Late-night viewers can wake several episodes ahead, lose their true stopping poi
 
 - The product is a concept with an interactive front-end prototype.
 - Existing percentages and financial outcomes are hypotheses or targets, not measured results.
-- No UAT, production deployment, or customer validation has been completed.
-- Phase 1 will establish the evidence baseline before a focused pilot is finalized.
+- No UAT, production deployment, or Netflix-customer validation has been completed.
+- Phase 2 used independent public evidence to test the concept baselines without implying Netflix-sponsored research.
 
 ## Proposed pilot direction
 
@@ -32,7 +32,7 @@ The first viable release is expected to focus on a small, testable customer prom
 - Locally saved sleep checkpoint
 - Next-session recovery card
 
-Wearable integrations, binaural audio, advanced DSP, premium prompts, and distributed multi-device synchronization remain part of the broader vision but require separate feasibility and desirability validation.
+Wearable integrations and distributed multi-device synchronization remain later feasibility tracks. Binaural audio, therapeutic sleep claims, premium prompts, and fixed global late-night activation have been removed from the first viable release.
 
 ## Repository map
 
@@ -43,6 +43,8 @@ Wearable integrations, binaural audio, advanced DSP, premium prompts, and distri
 | `docs/technical/` | Architecture, offline sync, experimentation, and telemetry specifications |
 | `docs/delivery/` | Original and updated backlog, quality gates, and release governance |
 | `docs/strategy/` | Go-to-market and executive strategy materials |
+| `phase-1/` | Research charter, hypotheses, instruments, pilot scope, and economic assumptions |
+| `phase-2/` | Secondary-evidence charter, research synthesis, validation matrix, and revised recommendations |
 | `PROJECT_STATUS.md` | Current maturity, evidence position, and approved next phase |
 | `DISCLAIMER.md` | Independence, trademark, evidence, and use statements |
 
@@ -63,7 +65,7 @@ The current artifact set covers:
 
 ## Next phase
 
-Phase 1 has started with the decision log, research charter, and hypothesis-and-evidence register. Gate 1 approval will authorize the participant screener, quantitative survey, qualitative interview guide, usability protocol, analysis framework, initial pilot scope, and economic-model assumptions register.
+Gate 2 recommends a conditional pass into prototype evidence and feasibility. The next phase will refactor the prototype to the evidence-backed manual timer, checkpoint, and recovery pilot; conduct expert accessibility and heuristic review; and test checkpoint feasibility without representing simulated or expert evidence as customer validation.
 
 ## Author
 
