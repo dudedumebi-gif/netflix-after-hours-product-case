@@ -1,7 +1,7 @@
 # Netflix After Hours
 
 **Status:** Project in flight - concept and interactive prototype  
-**Current stage:** Phase 1 evidence baseline queued  
+**Current stage:** Phase 1 evidence baseline in progress  
 **Role:** AI Product Manager and product case author
 
 Netflix After Hours is an independent, portfolio-grade product innovation case exploring how a streaming service could improve the late-night viewing experience for people who fall asleep while watching.
@@ -63,7 +63,7 @@ The current artifact set covers:
 
 ## Next phase
 
-Phase 1 will create the research charter, hypothesis and evidence register, participant screener, quantitative survey, qualitative interview guide, usability protocol, analysis framework, initial pilot scope, and economic-model assumptions register.
+Phase 1 has started with the decision log, research charter, and hypothesis-and-evidence register. Gate 1 approval will authorize the participant screener, quantitative survey, qualitative interview guide, usability protocol, analysis framework, initial pilot scope, and economic-model assumptions register.
 
 ## Author
 
