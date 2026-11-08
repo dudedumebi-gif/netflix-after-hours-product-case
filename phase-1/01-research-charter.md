@@ -1,5 +1,7 @@
 # Phase 1 Research Charter
 
+**Gate 1 status:** Approved on 2026-11-08
+
 ## 1. Purpose
 
 Phase 1 will determine whether late-night streaming creates a sufficiently frequent and meaningful customer problem, whether the proposed experience addresses it, and whether the resulting behaviour could support a credible economic case.
