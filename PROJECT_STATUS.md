@@ -6,12 +6,12 @@
 | --- | --- |
 | Portfolio classification | Project in flight |
 | Product maturity | Concept and interactive prototype |
-| Customer evidence | Not yet validated |
+| Customer evidence | Context directionally supported by secondary evidence; product-specific outcomes unvalidated |
 | Quantitative outcomes | Hypothesis-based |
 | Technical implementation | Architecture proposal only |
 | UAT | Not started |
 | Deployment readiness | Not ready |
-| Current phase | Phase 1 - evidence baseline in progress |
+| Current phase | Phase 2 complete - Gate 2 conditional pass recommended |
 
 ## Confirmed product principles
 
@@ -21,23 +21,16 @@
 4. The first viable release will be a smaller pilot designed to create an observable customer win.
 5. Claims will be labelled as assumptions, hypotheses, targets, benchmarks, or validated findings.
 
-## Phase 1 scope
+## Phase 2 outcome
 
-Phase 1 is establishing the evidence foundation through:
+Independent secondary research supports bedtime viewing as a credible context and manual timers as an established pattern. It does not validate the incidence of falling asleep during paid streaming, recovery-card value, unattended playback, retention, Premium conversion, or Netflix-specific savings.
 
-- A research charter
-- A hypothesis and evidence register
-- Quantitative survey design
-- Qualitative interview design
-- Prototype usability testing design
-- An analysis and synthesis framework
-- Initial pilot boundaries
-- Economic-model assumptions
+Gate 2 is therefore recommended as a conditional pass into a narrowed manual timer, checkpoint, and recovery pilot. Wearable triggers, advanced audio, therapeutic claims, fixed global activation windows, and quantified financial outcomes are excluded.
 
 ## Decision gates
 
-- **Gate 1:** Approve the research questions, hypotheses, and evidence standards.
-- **Gate 2:** Confirm that the customer problem is sufficiently frequent, painful, and addressable.
+- **Gate 1:** Approved. Research questions, hypotheses, and evidence standards established.
+- **Gate 2:** Conditional pass recommended. The context is credible and addressable; frequency, severity, and product desirability remain unvalidated.
 - **Gate 3:** Confirm that pilot usability and technical feasibility have no critical blocker.
 - **Gate 4:** Confirm a positive value case under conservative assumptions.
 
