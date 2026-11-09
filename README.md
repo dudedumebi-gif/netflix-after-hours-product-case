@@ -1,7 +1,7 @@
 # Netflix After Hours
 
 **Status:** Project in flight - concept and interactive prototype  
-**Current stage:** Phase 3 prototype evidence and feasibility in progress  
+**Current stage:** Phase 3 evidence package complete; Gate 3 conditional pass awaiting approval  
 **Role:** AI Product Manager and product case author
 
 Netflix After Hours is an independent, portfolio-grade product innovation case exploring how a streaming service could improve the late-night viewing experience for people who fall asleep while watching.
@@ -66,7 +66,7 @@ The current artifact set covers:
 
 ## Current phase
 
-Gate 2 was approved on 2026-11-08. Phase 3 has begun with an evidence-aligned prototype refactor. It will continue with expert accessibility and heuristic review, local-checkpoint feasibility analysis, and a clearly labelled simulated measurement model. None of these activities will be represented as Netflix-customer validation.
+Gate 2 was approved on 2026-11-08. Phase 3 has completed the evidence-aligned prototype refactor, static heuristic/accessibility audit, checkpoint feasibility and failure model, event dictionary, and clearly labelled synthetic measurement example. Gate 3 is recommended for a conditional pass because rendered-browser and assistive-technology verification remain outstanding. None of these activities is represented as Netflix-customer validation.
 
 ## Author
 
