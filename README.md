@@ -1,7 +1,7 @@
 # Netflix After Hours
 
 **Status:** Project in flight - concept and interactive prototype  
-**Current stage:** Phase 3 evidence package complete; Gate 3 conditional pass awaiting approval  
+**Current stage:** Phase 4 value case complete; Gate 4 positive case not demonstrated  
 **Role:** AI Product Manager and product case author
 
 Netflix After Hours is an independent, portfolio-grade product innovation case exploring how a streaming service could improve the late-night viewing experience for people who fall asleep while watching.
@@ -46,6 +46,7 @@ Wearable integrations and distributed multi-device synchronization remain later 
 | `phase-1/` | Research charter, hypotheses, instruments, pilot scope, and economic assumptions |
 | `phase-2/` | Secondary-evidence charter, research synthesis, validation matrix, and revised recommendations |
 | `phase-3/` | Prototype refactor, expert review, feasibility evidence, and simulated measurement design |
+| `phase-4/` | Normalized value model, methodology, scenario results, and Gate 4 decision |
 | `PROJECT_STATUS.md` | Current maturity, evidence position, and approved next phase |
 | `DISCLAIMER.md` | Independence, trademark, evidence, and use statements |
 
@@ -66,7 +67,7 @@ The current artifact set covers:
 
 ## Current phase
 
-Gate 2 was approved on 2026-11-08. Phase 3 has completed the evidence-aligned prototype refactor, static heuristic/accessibility audit, checkpoint feasibility and failure model, event dictionary, and clearly labelled synthetic measurement example. Gate 3 is recommended for a conditional pass because rendered-browser and assistive-technology verification remain outstanding. None of these activities is represented as Netflix-customer validation.
+Gate 3 was conditionally approved on 2026-11-08. Phase 4 has completed a formula-driven normalized value model. Physical stream-hours can be calculated under labelled assumptions, but a positive financial case is not demonstrated because marginal delivery value, implementation cost, and operating cost are unavailable. Retention and Premium contribution remain zero. None of these activities is represented as Netflix-customer validation or Netflix economics.
 
 ## Author
 
