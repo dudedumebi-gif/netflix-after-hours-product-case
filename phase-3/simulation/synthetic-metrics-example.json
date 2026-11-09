@@ -1,0 +1,31 @@
+{
+  "label": "SIMULATED RESULT — NOT CUSTOMER OR NETFLIX DATA",
+  "seed": 2408,
+  "sessions": {
+    "control": 200,
+    "treatment": 200
+  },
+  "counts": {
+    "timer_activations": 127,
+    "transition_cancellations": 19,
+    "controlled_stops": 108,
+    "recovery_cards_shown": 95,
+    "successful_recoveries": 73,
+    "position_corrections": 7,
+    "rapid_restarts": 3
+  },
+  "rates": {
+    "activation_rate": 0.635,
+    "controlled_stop_rate_among_activated": 0.8504,
+    "cancellation_rate_among_activated": 0.1496,
+    "successful_recovery_rate": 0.7684,
+    "position_correction_rate": 0.0737,
+    "rapid_restart_guardrail_rate": 0.0278
+  },
+  "playback_minutes": {
+    "control_mean_post_trigger": 32.54,
+    "treatment_mean_post_trigger": 14.59,
+    "simulated_intention_to_treat_difference": 17.95
+  },
+  "interpretation_limit": "The simulation proves metric computability only. It does not estimate adoption, customer value, causal impact, retention, conversion, cost, or savings."
+}
