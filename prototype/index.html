@@ -1,722 +1,107 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>After Hours — Independent Streaming Product Prototype</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #09090b;
-            color: #f4f4f5;
-            user-select: auto;
-        }
-
-        button:focus-visible, input:focus-visible {
-            outline: 3px solid #fb923c;
-            outline-offset: 3px;
-        }
-
-        /* Device Frame Styling */
-        .viewport-mobile {
-            width: min(380px, calc(100vw - 32px));
-            height: 780px;
-            border-radius: 44px;
-            border: 10px solid #27272a;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-        }
-
-        .viewport-tablet {
-            width: min(820px, calc(100vw - 32px));
-            height: 580px;
-            border-radius: 28px;
-            border: 12px solid #27272a;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
-        }
-
-        .viewport-tv {
-            width: min(1060px, calc(100vw - 32px));
-            height: 600px;
-            border-radius: 16px;
-            border: 14px solid #18181b;
-            box-shadow: 0 30px 60px -12px rgba(229, 9, 20, 0.15), 0 0 40px rgba(0,0,0,0.9);
-        }
-
-        /* Video Glow & Animations */
-        .ambient-glow {
-            box-shadow: 0 0 80px rgba(255, 69, 0, 0.2);
-        }
-
-        /* Custom Scrollbars */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #141414;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #ff4500;
-        }
-
-        /* Pulsing Audio Waveform Bar */
-        @keyframes soundWave {
-            0%, 100% { height: 6px; }
-            50% { height: 28px; }
-        }
-        .animate-wave {
-            animation: soundWave 1.2s ease-in-out infinite;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="After Hours: an independent, evidence-aligned streaming product concept for gentler late-night viewing.">
+  <meta name="theme-color" content="#08090c">
+  <title>After Hours — Independent Streaming Product Prototype</title>
+  <style>
+    :root{color-scheme:dark;--ink:#f7f7f4;--muted:#a8a8b3;--panel:#121319;--line:#2a2c35;--ember:#ff6a2a;--ember2:#ff9b57;--red:#d91b2b;--focus:#ffd29a;--success:#75d8a8;--radius:22px;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    *{box-sizing:border-box}html{background:#08090c;scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--ink);background:radial-gradient(circle at 50% -20%,#2b1820 0,transparent 40%),#08090c;line-height:1.45}button{font:inherit}button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);outline-offset:3px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .shell{width:min(1320px,100%);margin:auto;padding:20px}.notice{display:flex;align-items:center;justify-content:center;gap:8px;padding:8px 14px;color:#d5d5dc;background:#111218;border:1px solid #25262d;border-radius:999px;font-size:12px;text-align:center}.dot{width:7px;height:7px;border-radius:50%;background:var(--ember);box-shadow:0 0 14px var(--ember)}
+    .topbar{display:grid;grid-template-columns:1fr auto auto;gap:18px;align-items:center;margin:14px 0 18px;padding:14px 16px;background:rgba(17,18,24,.9);border:1px solid #272934;border-radius:20px;box-shadow:0 18px 45px rgba(0,0,0,.28);backdrop-filter:blur(16px)}.brand{display:flex;gap:12px;align-items:center}.mark{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:linear-gradient(140deg,var(--red),#ff6330);font-weight:950;letter-spacing:-2px;box-shadow:0 8px 22px rgba(217,27,43,.28)}.brand h1{margin:0;font-size:17px;letter-spacing:.08em}.brand p{margin:2px 0 0;color:var(--muted);font-size:11px}.controls{display:flex;gap:5px;padding:4px;border:1px solid #2a2c34;border-radius:13px;background:#090a0e}.control{border:0;border-radius:9px;padding:8px 11px;color:#a8a9b3;background:transparent;cursor:pointer;font-size:12px;font-weight:700;white-space:nowrap}.control:hover{color:white;background:#20222a}.control[aria-pressed="true"]{color:#fff;background:#343641;box-shadow:0 3px 12px rgba(0,0,0,.28)}.story-control[aria-pressed="true"]{background:linear-gradient(135deg,#d84a19,#ff6a2a)}
+    .workspace{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:18px;align-items:start}.stage{min-height:680px;display:grid;place-items:center;padding:28px;border:1px solid #20222a;border-radius:28px;background:radial-gradient(circle at 50% 35%,rgba(255,106,42,.08),transparent 43%),rgba(11,12,16,.78);overflow:hidden}.device{position:relative;width:min(100%,1000px);aspect-ratio:16/9;overflow:hidden;border:12px solid #22242b;border-radius:18px;background:#050506;box-shadow:0 34px 85px rgba(0,0,0,.65),0 0 70px rgba(255,72,27,.09);transition:.35s ease}.device[data-device="tablet"]{width:min(100%,790px);aspect-ratio:4/3;border-radius:28px}.device[data-device="mobile"]{width:min(100%,380px);aspect-ratio:9/18.5;border-width:9px;border-radius:42px}.device:before{content:"";position:absolute;z-index:30;top:7px;left:50%;width:46px;height:5px;transform:translateX(-50%);border-radius:99px;background:#3d3e45;opacity:0}.device[data-device="mobile"]:before{opacity:1}.screen{position:absolute;inset:0;overflow:hidden;background:#090a0e}.scene{position:absolute;inset:0;display:none}.scene.active{display:flex}.art{position:absolute;inset:0;background:radial-gradient(circle at 70% 23%,rgba(255,183,105,.55) 0 1%,transparent 18%),radial-gradient(circle at 58% 49%,rgba(255,92,45,.32),transparent 32%),linear-gradient(155deg,#0c1721 0 35%,#362024 55%,#0c0c11 100%)}.art:before{content:"";position:absolute;inset:35% -10% -10%;background:linear-gradient(155deg,transparent 0 22%,#101219 22% 36%,transparent 36%),linear-gradient(25deg,transparent 0 48%,#21171c 49% 60%,transparent 61%);opacity:.9}.art:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at center,transparent 0 30%,rgba(0,0,0,.28) 70%),linear-gradient(to bottom,rgba(0,0,0,.72),transparent 35%,rgba(0,0,0,.9))}.grid{position:absolute;inset:0;opacity:.09;background-image:radial-gradient(#ffb178 1px,transparent 1px);background-size:20px 20px}.player{position:relative;z-index:2;width:100%;height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:26px}.player-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.eyebrow{color:var(--ember2);font-size:11px;font-weight:850;letter-spacing:.13em;text-transform:uppercase}.title{font-size:clamp(17px,2.2vw,28px);font-weight:850;letter-spacing:-.02em}.meta{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.pill{padding:5px 8px;border:1px solid rgba(255,255,255,.18);border-radius:7px;background:rgba(10,10,12,.65);font-size:10px;color:#ddd}.play{align-self:center;display:grid;place-items:center;width:72px;height:72px;border:1px solid rgba(255,255,255,.5);border-radius:50%;color:#fff;background:rgba(255,94,39,.86);cursor:pointer;box-shadow:0 0 45px rgba(255,79,34,.35);font-size:25px}.player-bottom{display:grid;gap:12px}.progress-row{display:flex;gap:10px;align-items:center;color:#b5b5bd;font:11px ui-monospace,monospace}.track{height:5px;flex:1;background:#4a4b53;border-radius:99px;overflow:hidden}.track span{display:block;width:68%;height:100%;background:var(--ember)}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px}.icon-row{display:flex;align-items:center;gap:7px}.icon-btn{display:grid;place-items:center;min-width:36px;height:36px;border:0;border-radius:10px;color:#ddd;background:rgba(17,18,22,.68);cursor:pointer}.timer-btn{border:1px solid rgba(255,184,138,.38);border-radius:12px;padding:9px 12px;color:white;background:linear-gradient(135deg,#d94c18,var(--ember));cursor:pointer;font-size:12px;font-weight:800;box-shadow:0 8px 22px rgba(255,92,35,.24)}
+    .dialog-backdrop{position:absolute;z-index:50;inset:0;display:none;place-items:center;padding:18px;background:rgba(4,5,7,.82);backdrop-filter:blur(9px)}.dialog-backdrop.open{display:grid}.dialog{width:min(390px,100%);padding:20px;border:1px solid #754126;border-radius:19px;background:#101116;box-shadow:0 30px 70px rgba(0,0,0,.6)}.dialog-head{display:flex;justify-content:space-between;align-items:center}.dialog h2{margin:0;font-size:18px}.dialog p{margin:7px 0 15px;color:#b5b5be;font-size:12px}.close{border:0;color:#ccc;background:transparent;font-size:22px;cursor:pointer}.timer-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.timer-option{padding:13px 8px;border:1px solid #343640;border-radius:12px;color:#fff;background:#191a21;cursor:pointer;font-weight:750}.timer-option:hover{border-color:var(--ember)}.timer-option small{display:block;color:#999aa4;font-weight:500}.hint{margin-top:13px;padding:9px 10px;border-radius:10px;background:#17181e;color:#9fa0aa;font-size:10px}
+    .transition-scene{align-items:center;justify-content:center;background:radial-gradient(circle at 50% 20%,#25160f,#08090d 52%)}.transition-card{position:relative;z-index:2;width:min(520px,88%);text-align:center}.moon{width:94px;height:94px;margin:0 auto 22px;border-radius:50%;background:#ffb268;box-shadow:0 0 95px rgba(255,136,68,.35);position:relative}.moon:after{content:"";position:absolute;inset:-4px -4px 12px 24px;border-radius:50%;background:#101014}.countdown{font-size:clamp(44px,9vw,82px);font-weight:900;letter-spacing:-.06em}.transition-card h2{margin:0;font-size:clamp(22px,4vw,38px)}.transition-card p{color:#aaaab4;margin:8px auto 22px;max-width:430px}.actions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}.primary,.secondary{border-radius:12px;padding:11px 15px;cursor:pointer;font-weight:780}.primary{border:1px solid #ff9e68;color:#fff;background:linear-gradient(135deg,#d94c18,var(--ember))}.secondary{border:1px solid #393b45;color:#e7e7ea;background:#18191f}
+    .resume-scene{align-items:center;justify-content:center;background:linear-gradient(150deg,#0b0c10,#181018 55%,#0b0c10)}.resume-card{width:min(690px,90%);padding:clamp(18px,4vw,32px);border:1px solid #30313b;border-radius:22px;background:rgba(17,18,24,.94);box-shadow:0 28px 70px rgba(0,0,0,.5)}.resume-card h2{margin:3px 0 4px;font-size:clamp(23px,4vw,36px)}.resume-card>p{margin:0 0 20px;color:#a7a8b2}.choice-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}.choice{display:flex;flex-direction:column;gap:7px;min-height:155px;padding:18px;text-align:left;border:1px solid #393b45;border-radius:16px;color:#fff;background:#181920;cursor:pointer}.choice:hover{border-color:var(--ember);transform:translateY(-1px)}.choice strong{font-size:16px}.choice span{color:#adaeb7;font-size:12px}.choice .time{margin-top:auto;color:var(--ember2);font:700 12px ui-monospace,monospace}.saved{display:inline-flex;align-items:center;gap:6px;color:var(--success);font-size:11px;font-weight:800}.saved:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--success)}
+    .side{display:grid;gap:12px}.card{padding:16px;border:1px solid #272934;border-radius:18px;background:#111218}.card h2{margin:0 0 9px;font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:#c7c8cf}.card p,.card li{color:#9fa0aa;font-size:11px}.card p{margin:0}.card ul{margin:0;padding-left:17px;display:grid;gap:7px}.status{display:grid;grid-template-columns:auto 1fr;gap:8px 10px;align-items:center}.status b{font-size:11px}.status span{color:#9697a2;font-size:10px}.status-icon{display:grid;place-items:center;width:27px;height:27px;border-radius:9px;background:#1d271f;color:var(--success)}.event-log{display:grid;gap:7px;max-height:170px;overflow:auto}.event{padding:7px 8px;border-radius:8px;background:#191a20;color:#a8a9b2;font:9px ui-monospace,monospace}.footer{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:18px 0 6px;color:#868791;font-size:11px}.footer a{color:#bbbcc5}.prototype-badge{color:#ffbb8b;font-weight:800}
+    .toast{position:fixed;z-index:80;left:50%;bottom:22px;transform:translate(-50%,120px);padding:11px 15px;border:1px solid #454752;border-radius:12px;background:#191a20;color:white;box-shadow:0 18px 45px rgba(0,0,0,.45);font-size:12px;transition:.25s}.toast.show{transform:translate(-50%,0)}
+    .device[data-device="mobile"] .player{padding:26px 15px 18px}.device[data-device="mobile"] .meta,.device[data-device="mobile"] .optional-icon{display:none}.device[data-device="mobile"] .title{font-size:17px}.device[data-device="mobile"] .play{width:60px;height:60px}.device[data-device="mobile"] .choice-list{grid-template-columns:1fr}.device[data-device="mobile"] .choice{min-height:110px}.device[data-device="mobile"] .resume-card{max-height:90%;overflow:auto}.device[data-device="mobile"] .transition-card p{font-size:12px}.device[data-device="mobile"] .timer-grid{grid-template-columns:1fr 1fr}
+    @media(max-width:980px){.topbar{grid-template-columns:1fr}.controls{overflow:auto}.workspace{grid-template-columns:1fr}.side{grid-template-columns:repeat(3,1fr)}.stage{min-height:610px;padding:18px}}
+    @media(max-width:650px){.shell{padding:10px}.notice{border-radius:13px}.side{grid-template-columns:1fr}.stage{min-height:650px;padding:10px}.topbar{padding:12px}.footer{align-items:flex-start;flex-direction:column}.control{padding:8px}.device:not([data-device="mobile"]){aspect-ratio:4/3}.player{padding:18px 14px}.meta{display:none}.optional-icon{display:none}.choice-list{grid-template-columns:1fr}.choice{min-height:105px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+  </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-start p-4 md:p-6 overflow-x-hidden">
-
-    <!-- TOP NAVIGATION & PROTOTYPE CONTROLLER -->
-    <header class="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-between gap-4 mb-6 bg-zinc-900/90 backdrop-blur-md p-4 rounded-2xl border border-zinc-800 shadow-2xl">
-        <div class="flex items-center gap-3">
-            <div class="bg-red-600 text-white font-black tracking-tighter px-3 py-1 rounded text-sm shadow-md">STREAMING CONCEPT</div>
-            <div>
-                <h1 class="font-extrabold text-lg text-white flex items-center gap-2">
-                    AFTER HOURS <span class="bg-orange-600/20 text-orange-400 text-xs font-semibold px-2 py-0.5 rounded-full border border-orange-500/30">PROTOTYPE</span>
-                </h1>
-                <p class="text-xs text-zinc-400">Independent portfolio concept • Not affiliated with Netflix</p>
-            </div>
-        </div>
-
-        <!-- User Story Scenario Selector -->
-        <div class="flex items-center gap-1 bg-zinc-950 p-1 rounded-xl border border-zinc-800">
-            <button onclick="switchStory('US-01')" id="btn-us1" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 bg-orange-600 text-white shadow-lg">
-                <i data-lucide="moon" class="w-3.5 h-3.5"></i> US-01: Timer Setup
-            </button>
-            <button onclick="switchStory('US-02')" id="btn-us2" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 text-zinc-400 hover:text-white">
-                <i data-lucide="sliders" class="w-3.5 h-3.5"></i> US-02: Stop Transition
-            </button>
-            <button onclick="switchStory('US-03')" id="btn-us3" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 text-zinc-400 hover:text-white">
-                <i data-lucide="bookmark" class="w-3.5 h-3.5"></i> US-03: Resume Choice
-            </button>
-        </div>
-
-        <!-- Viewport Device Switcher -->
-        <div class="flex items-center gap-1 bg-zinc-950 p-1 rounded-xl border border-zinc-800">
-            <button onclick="switchViewport('mobile')" id="btn-vp-mobile" class="p-2 rounded-lg text-xs font-medium text-zinc-400 hover:text-white flex items-center gap-1">
-                <i data-lucide="smartphone" class="w-4 h-4"></i> <span class="hidden sm:inline">Mobile</span>
-            </button>
-            <button onclick="switchViewport('tablet')" id="btn-vp-tablet" class="p-2 rounded-lg text-xs font-medium text-zinc-400 hover:text-white flex items-center gap-1">
-                <i data-lucide="tablet" class="w-4 h-4"></i> <span class="hidden sm:inline">Tablet</span>
-            </button>
-            <button onclick="switchViewport('tv')" id="btn-vp-tv" class="p-2 rounded-lg font-bold text-orange-500 bg-zinc-800 shadow flex items-center gap-1">
-                <i data-lucide="tv" class="w-4 h-4"></i> <span class="hidden sm:inline">TV 65"</span>
-            </button>
-        </div>
+<body>
+  <div class="shell">
+    <div class="notice"><span class="dot" aria-hidden="true"></span>Independent portfolio concept · Not affiliated with, endorsed by, or produced for Netflix · Fictional content</div>
+    <header class="topbar">
+      <div class="brand"><div class="mark" aria-hidden="true">AH</div><div><h1>AFTER HOURS</h1><p>Evidence-aligned interactive product prototype</p></div></div>
+      <nav class="controls" aria-label="Prototype journeys">
+        <button class="control story-control" data-story="timer" aria-pressed="true">01 · Set timer</button>
+        <button class="control story-control" data-story="transition" aria-pressed="false">02 · Stop gently</button>
+        <button class="control story-control" data-story="resume" aria-pressed="false">03 · Resume clearly</button>
+      </nav>
+      <div class="controls" aria-label="Device preview">
+        <button class="control device-control" data-device-choice="mobile" aria-pressed="false">Mobile</button>
+        <button class="control device-control" data-device-choice="tablet" aria-pressed="false">Tablet</button>
+        <button class="control device-control" data-device-choice="tv" aria-pressed="true">TV</button>
+      </div>
     </header>
 
-    <!-- MAIN PROTOTYPE WORKSPACE CONTAINER -->
-    <main class="w-full flex-1 flex flex-col items-center justify-center relative">
-
-        <!-- DEVICE FRAME WRAPPER -->
-        <div id="device-frame" class="viewport-tv bg-black relative overflow-hidden transition-all duration-500 flex flex-col justify-between">
-
-            <!-- SCREEN CONTENT DISPLAY -->
-            <div id="screen-container" class="w-full h-full relative overflow-hidden flex flex-col justify-between bg-black">
-
-                <!-- ========================================== -->
-                <!-- VIEW 1: USER STORY 01 — VIDEO PLAYER & TIMER -->
-                <!-- ========================================== -->
-                <div id="view-us1" class="w-full h-full relative flex flex-col justify-between bg-zinc-950 overflow-hidden">
-                    <!-- Fake Video Background Canvas -->
-                    <div class="absolute inset-0 z-0 bg-cover bg-center transition-all duration-700" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop');">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/60"></div>
-                        <!-- Ambient Night Particles Overlay -->
-                        <div class="absolute inset-0 opacity-40 bg-[radial-gradient(#ff4500_1px,transparent_1px)] [background-size:16px_16px]"></div>
-                    </div>
-
-                    <!-- Top Player Header Controls -->
-                    <div class="relative z-10 p-6 flex items-center justify-between bg-gradient-to-b from-black/90 to-transparent">
-                        <div class="flex items-center gap-4">
-                            <button aria-label="Return to previous screen" class="p-2 rounded-full bg-zinc-900/60 text-white hover:bg-zinc-800">
-                                <i data-lucide="arrow-left" class="w-5 h-5"></i>
-                            </button>
-                            <div>
-                                <span class="text-xs font-bold text-orange-500 tracking-wider uppercase flex items-center gap-1">
-                                    <i data-lucide="moon" class="w-3 h-3"></i> After Hours Concept
-                                </span>
-                                <h2 id="player-title" class="text-lg md:text-xl font-bold text-white">Midnight Signals — S1:E3 "The Crossing"</h2>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <span class="text-xs bg-zinc-800/80 px-2.5 py-1 rounded text-zinc-300 font-mono">4K Ultra HD</span>
-                            <span class="text-xs bg-orange-600/20 text-orange-400 border border-orange-500/40 px-2.5 py-1 rounded font-medium flex items-center gap-1">
-                                <i data-lucide="sparkles" class="w-3 h-3"></i> Spatial Audio
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Center Play Pause Simulation Target -->
-                    <div class="relative z-10 self-center flex items-center justify-center my-auto">
-                        <button id="play-pause-btn" aria-label="Pause playback" onclick="toggleVideoPlay()" class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-orange-600/90 text-white flex items-center justify-center hover:scale-105 transition shadow-2xl shadow-orange-600/40 backdrop-blur-md border border-orange-400/50">
-                            <i id="play-icon" data-lucide="pause" class="w-8 h-8 fill-current"></i>
-                        </button>
-                    </div>
-
-                    <!-- BOTTOM PLAYER CONTROL BAR -->
-                    <div class="relative z-10 p-6 bg-gradient-to-t from-black via-black/90 to-transparent flex flex-col gap-3">
-                        <!-- Progress Scrubber -->
-                        <div class="flex items-center gap-3">
-                            <span class="text-xs text-zinc-400 font-mono">42:15</span>
-                            <div class="flex-1 h-1.5 bg-zinc-800 rounded-full overflow-hidden cursor-pointer relative group">
-                                <div class="w-3/4 h-full bg-orange-600 rounded-full relative">
-                                    <div class="absolute right-0 top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-white rounded-full shadow-md scale-0 group-hover:scale-100 transition"></div>
-                                </div>
-                            </div>
-                            <span class="text-[11px] text-zinc-400 font-mono">-38:40</span>
-                        </div>
-
-                        <!-- Action Toolbar -->
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-2 md:gap-4">
-                                <button aria-label="Skip backward" class="p-2 text-zinc-300 hover:text-white rounded-lg hover:bg-zinc-800/60">
-                                    <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
-                                </button>
-                                <button aria-label="Skip forward" class="p-2 text-zinc-300 hover:text-white rounded-lg hover:bg-zinc-800/60">
-                                    <i data-lucide="rotate-cw" class="w-5 h-5"></i>
-                                </button>
-                                <button aria-label="Volume controls" class="p-2 text-zinc-300 hover:text-white rounded-lg hover:bg-zinc-800/60">
-                                    <i data-lucide="volume-2" class="w-5 h-5"></i>
-                                </button>
-                            </div>
-
-                            <div class="flex items-center gap-2 md:gap-3">
-                                <!-- US-01 PROMINENT BEDTIME MOON BUTTON -->
-                                <button id="moon-timer-btn" aria-haspopup="dialog" aria-controls="timer-modal" onclick="openTimerMenu()" class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-orange-600 text-white font-semibold text-xs md:text-sm hover:bg-orange-500 transition shadow-lg shadow-orange-600/30 border border-orange-400/40 animate-pulse">
-                                    <i data-lucide="moon" class="w-4 h-4 fill-current"></i>
-                                    <span id="active-timer-label">Bedtime Timer</span>
-                                </button>
-
-                                <button aria-label="Subtitle settings" class="p-2 text-zinc-300 hover:text-white rounded-lg hover:bg-zinc-800/60">
-                                    <i data-lucide="subtitles" class="w-5 h-5"></i>
-                                </button>
-                                <button aria-label="Episode and playback options" class="p-2 text-zinc-300 hover:text-white rounded-lg hover:bg-zinc-800/60">
-                                    <i data-lucide="layers" class="w-5 h-5"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- LOW-LUMINESCENCE AMBER TIMER MENU OVERLAY (US-01 KEY SPEC) -->
-                    <div id="timer-modal" role="dialog" aria-modal="true" aria-labelledby="timer-dialog-title" class="hidden absolute inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4">
-                        <div class="w-full max-w-sm bg-zinc-950 border border-orange-500/30 rounded-2xl p-6 shadow-2xl flex flex-col gap-4 text-center">
-                            <div class="flex items-center justify-between border-b border-zinc-800 pb-3">
-                                <div class="flex items-center gap-2 text-orange-500">
-                                    <i data-lucide="moon" class="w-5 h-5"></i>
-                                    <h3 id="timer-dialog-title" class="font-bold text-white text-base">After Hours</h3>
-                                </div>
-                                <button id="close-timer-btn" aria-label="Close timer choices" onclick="closeTimerMenu()" class="text-zinc-400 hover:text-white p-1">
-                                    <i data-lucide="x" class="w-5 h-5"></i>
-                                </button>
-                            </div>
-                            <p class="text-xs text-zinc-400">Choose when playback should stop. An optional dimming transition previews the stop and a local checkpoint is saved for your next session.</p>
-
-                            <!-- Timer Options Grid -->
-                            <div class="grid grid-cols-2 gap-2.5 my-2">
-                                <button onclick="selectTimer('15m')" class="p-3 bg-zinc-900 border border-zinc-800 hover:border-orange-500 hover:bg-orange-950/40 text-white font-medium text-sm rounded-xl transition flex flex-col items-center gap-1">
-                                    <span class="text-base font-bold text-orange-400">15 min</span>
-                                    <span class="text-[10px] text-zinc-400">Short timer</span>
-                                </button>
-                                <button onclick="selectTimer('30m')" class="p-3 bg-zinc-900 border border-zinc-800 hover:border-orange-500 hover:bg-orange-950/40 text-white font-medium text-sm rounded-xl transition flex flex-col items-center gap-1">
-                                    <span class="text-base font-bold text-orange-400">30 min</span>
-                                    <span class="text-[10px] text-zinc-400">Recommended</span>
-                                </button>
-                                <button onclick="selectTimer('45m')" class="p-3 bg-zinc-900 border border-zinc-800 hover:border-orange-500 hover:bg-orange-950/40 text-white font-medium text-sm rounded-xl transition flex flex-col items-center gap-1">
-                                    <span class="text-base font-bold text-orange-400">45 min</span>
-                                    <span class="text-[10px] text-zinc-400">Extended timer</span>
-                                </button>
-                                <button onclick="selectTimer('End of Ep')" class="p-3 bg-zinc-900 border border-zinc-800 hover:border-orange-500 hover:bg-orange-950/40 text-white font-medium text-sm rounded-xl transition flex flex-col items-center gap-1">
-                                    <span class="text-base font-bold text-orange-400">End of Ep</span>
-                                    <span class="text-[10px] text-zinc-400">Finish episode</span>
-                                </button>
-                            </div>
-
-                            <!-- Evidence-backed pilot scope note -->
-                            <div class="p-3 bg-gradient-to-r from-orange-950/40 to-zinc-900 border border-orange-500/30 rounded-xl flex items-center text-left">
-                                <div class="flex items-center gap-2.5">
-                                    <i data-lucide="shield-check" class="w-5 h-5 text-orange-400"></i>
-                                    <div>
-                                        <div class="text-xs font-bold text-white">Manual pilot control</div>
-                                        <div class="text-[10px] text-zinc-400">No wearable or health data is used in this concept flow.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- TOAST CONFIRMATION NOTIFICATION -->
-                    <div id="toast-notification" role="status" aria-live="polite" class="hidden absolute top-6 left-1/2 -translate-x-1/2 z-50 bg-orange-600 text-white px-4 py-2.5 rounded-full shadow-2xl flex items-center gap-2 border border-orange-300 text-xs font-bold animate-bounce">
-                        <i data-lucide="check-circle-2" class="w-4 h-4"></i>
-                        <span id="toast-text">Sleep Timer set for 30 min</span>
-                    </div>
+    <main class="workspace">
+      <section class="stage" aria-label="Interactive prototype preview">
+        <div class="device" id="device" data-device="tv">
+          <div class="screen">
+            <section class="scene active" id="scene-timer" aria-label="Timer setup journey">
+              <div class="art" aria-hidden="true"></div><div class="grid" aria-hidden="true"></div>
+              <div class="player">
+                <div class="player-head"><div><div class="eyebrow">After Hours · fictional title</div><div class="title">Midnight Signals · S1 E3</div></div><div class="meta"><span class="pill">13+</span><span class="pill">HD</span><span class="pill">Audio description</span></div></div>
+                <button class="play" id="playButton" aria-label="Pause fictional playback">Ⅱ</button>
+                <div class="player-bottom">
+                  <div class="progress-row"><span>42:15</span><div class="track" aria-label="Playback progress"><span></span></div><span>−19:40</span></div>
+                  <div class="toolbar"><div class="icon-row"><button class="icon-btn" aria-label="Skip back ten seconds">↶</button><button class="icon-btn optional-icon" aria-label="Volume">◖))</button></div><button class="timer-btn" id="openTimer" aria-haspopup="dialog" aria-controls="timerDialog">☾ <span id="timerLabel">Set bedtime timer</span></button></div>
                 </div>
+              </div>
+              <div class="dialog-backdrop" id="timerDialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle" aria-hidden="true">
+                <div class="dialog"><div class="dialog-head"><h2 id="dialogTitle">When should playback stop?</h2><button class="close" id="closeTimer" aria-label="Close timer choices">×</button></div><p>Choose a simple stop point. We’ll dim first, then save a local checkpoint for your next session.</p><div class="timer-grid"><button class="timer-option" data-timer="15 minutes">15 min<small>Quick wind-down</small></button><button class="timer-option" data-timer="30 minutes">30 min<small>Most popular</small></button><button class="timer-option" data-timer="45 minutes">45 min<small>Longer session</small></button><button class="timer-option" data-timer="End of episode">End episode<small>No next episode</small></button></div><div class="hint">Any playback input cancels the stop transition immediately.</div></div>
+              </div>
+            </section>
 
-                <!-- ========================================== -->
-                <!-- VIEW 2: USER STORY 02 — DIMMING & AUDIO SIMULATOR -->
-                <!-- ========================================== -->
-                <div id="view-us2" class="hidden w-full h-full relative bg-zinc-950 p-6 flex flex-col justify-between overflow-hidden">
-                    <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
-                        <div>
-                            <span class="text-xs font-bold text-orange-500 uppercase tracking-widest">US-02 Simulator</span>
-                            <h2 class="text-xl font-bold text-white">Countdown & Controlled Stop Preview</h2>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span id="phase-badge" aria-live="polite" class="px-3 py-1 bg-green-500/20 text-green-400 border border-green-500/30 rounded-full text-xs font-semibold">
-                                Phase 0: Normal Playback
-                            </span>
-                        </div>
-                    </div>
+            <section class="scene transition-scene" id="scene-transition" aria-label="Controlled stop journey">
+              <div class="transition-card"><div class="moon" aria-hidden="true"></div><div class="eyebrow">Timer complete · screen dimmed</div><div class="countdown" id="countdown">10</div><h2>Playback is about to stop</h2><p>Your place will be saved on this device. Continue now or let the episode stop gently.</p><div class="actions"><button class="primary" id="keepWatching">Keep watching</button><button class="secondary" id="stopNow">Stop now</button></div></div>
+            </section>
 
-                    <!-- VISUAL SIMULATOR DISPLAY CANVAS -->
-                    <div id="sim-canvas" class="flex-1 my-4 rounded-2xl bg-zinc-900 border border-zinc-800 relative overflow-hidden flex flex-col items-center justify-center transition-all duration-700">
-                        <!-- Simulated Video Screen Content -->
-                        <div id="sim-video" class="absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop');">
-                            <div id="sim-overlay" class="absolute inset-0 bg-black/0 transition-all duration-1000"></div>
-                        </div>
-
-                        <!-- Real-time Metrics Layer -->
-                        <div class="relative z-10 bg-black/80 backdrop-blur-md p-6 rounded-2xl border border-zinc-700 text-center flex flex-col gap-4 max-w-md w-full shadow-2xl">
-                            <h3 class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Live System Telemetry</h3>
-                            
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="bg-zinc-900 p-3 rounded-xl border border-zinc-800">
-                                    <div class="text-[10px] text-zinc-400 uppercase">Display brightness</div>
-                                    <div id="telemetry-lum" class="text-xl font-black text-orange-400 font-mono">100%</div>
-                                </div>
-                                <div class="bg-zinc-900 p-3 rounded-xl border border-zinc-800">
-                                    <div class="text-[10px] text-zinc-400 uppercase">Playback state</div>
-                                    <div id="telemetry-vol" class="text-xl font-black text-orange-400 font-mono">Playing</div>
-                                </div>
-                            </div>
-
-                            <!-- Viewer control guardrail -->
-                            <div>
-                                <div class="text-[10px] text-zinc-400 uppercase mb-2">Viewer control guardrail</div>
-                                <div class="flex items-center justify-center gap-2 h-10 bg-zinc-950 rounded-xl p-2 border border-zinc-800 text-xs text-zinc-300">
-                                    <i data-lucide="gamepad-2" class="w-4 h-4 text-orange-400"></i>
-                                    Any remote or touch input cancels the stop transition
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- TIMELINE PHASE CONTROLLER -->
-                    <div class="bg-zinc-900 p-4 rounded-2xl border border-zinc-800 flex flex-col gap-3">
-                        <div class="flex justify-between text-xs font-medium text-zinc-400">
-                            <span>Playback Timeline</span>
-                            <span id="sim-time-label" class="text-orange-400 font-mono">T - 15:00 min remaining</span>
-                        </div>
-                        
-                        <input aria-label="Stop transition progress" type="range" id="sim-scrubber" min="0" max="100" value="0" oninput="updateSimulation(this.value)" class="w-full accent-orange-500 cursor-pointer">
-
-                        <div class="grid grid-cols-3 gap-2 text-center text-[10px] font-semibold text-zinc-400">
-                            <button onclick="setSimStep(0)" class="p-2 bg-zinc-950 rounded-lg hover:text-white border border-zinc-800">1. Normal Playback</button>
-                            <button onclick="setSimStep(50)" class="p-2 bg-zinc-950 rounded-lg hover:text-white border border-zinc-800">2. Countdown & Optional Dimming</button>
-                            <button onclick="setSimStep(100)" class="p-2 bg-zinc-950 rounded-lg hover:text-white border border-zinc-800">3. Checkpoint & Stop</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ========================================== -->
-                <!-- VIEW 3: USER STORY 03 — RESUME CHOICE -->
-                <!-- ========================================== -->
-                <div id="view-us3" class="hidden w-full h-full relative bg-zinc-950 flex flex-col overflow-y-auto">
-                    <!-- Netflix Header Navbar -->
-                    <div class="p-6 flex items-center justify-between border-b border-zinc-800/80 bg-black/90 backdrop-blur-md sticky top-0 z-30">
-                        <div class="flex items-center gap-6">
-                            <span class="text-sm font-black text-red-500 tracking-tight">STREAMING CONCEPT</span>
-                            <div class="hidden md:flex items-center gap-4 text-xs font-medium text-zinc-300">
-                                <span class="text-white font-bold">Home</span>
-                                <span>Series</span>
-                                <span>Movies</span>
-                                <span>New & Popular</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <button aria-label="Search" class="p-1 text-zinc-300 hover:text-white"><i data-lucide="search" class="w-5 h-5"></i></button>
-                            <button aria-label="Notifications" class="p-1 text-zinc-300 hover:text-white"><i data-lucide="bell" class="w-5 h-5"></i></button>
-                            <div class="w-8 h-8 rounded-lg bg-orange-600 flex items-center justify-center font-bold text-xs">AH</div>
-                        </div>
-                    </div>
-
-                    <!-- DASHBOARD CONTENT CONTAINER -->
-                    <div class="p-6 flex flex-col gap-6">
-                        
-                        <!-- PROMINENT CHECKPOINT CHOICE BANNER (US-03 KEY SPEC) -->
-                        <div class="w-full bg-gradient-to-r from-orange-950 via-zinc-900 to-black border-2 border-orange-500/50 rounded-2xl p-6 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6 group hover:border-orange-500 transition-all">
-                            <!-- Background Subtle Glow -->
-                            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-orange-600/10 rounded-full blur-3xl"></div>
-
-                            <div class="flex items-start gap-4 z-10">
-                                <div class="p-3 bg-orange-600/20 text-orange-400 border border-orange-500/30 rounded-2xl shrink-0 mt-1">
-                                    <i data-lucide="moon" class="w-7 h-7"></i>
-                                </div>
-                                <div>
-                                    <div class="flex items-center gap-2 mb-1">
-                                        <span class="bg-orange-600 text-white font-bold text-[10px] uppercase px-2 py-0.5 rounded">After Hours Checkpoint</span>
-                                        <span id="checkpoint-metadata" class="text-xs text-zinc-400">Saved when your timer stopped playback at 11:42 PM</span>
-                                    </div>
-                                    <h2 class="text-xl md:text-2xl font-black text-white">Where would you like to resume Midnight Signals?</h2>
-                                    <p class="text-xs text-zinc-300 mt-1">Your timer checkpoint is <span id="checkpoint-position" class="text-orange-400 font-mono font-bold">14:20</span> in Episode 3. Your standard playback position is still available.</p>
-                                </div>
-                            </div>
-
-                            <!-- Interactive Resume Actions -->
-                            <div class="flex items-center gap-3 w-full md:w-auto z-10">
-                                <button onclick="resumeFromCheckpoint()" class="flex-1 md:flex-none px-5 py-3 bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs md:text-sm rounded-xl shadow-lg shadow-orange-600/30 flex items-center justify-center gap-2 transition hover:scale-105">
-                                    <i data-lucide="play" class="w-4 h-4 fill-current"></i> Use checkpoint 14:20
-                                </button>
-                                <button onclick="resumeFromStandardPosition()" class="px-4 py-3 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-semibold text-xs md:text-sm rounded-xl transition">
-                                    Use standard position 42:15
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Standard Continue Watching Row -->
-                        <div>
-                            <h3 class="text-sm font-bold text-white mb-3">Continue Watching for Alex</h3>
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div class="bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800">
-                                    <div class="h-28 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400&auto=format&fit=crop');"></div>
-                                    <div class="p-3">
-                                        <div class="text-xs font-bold text-white truncate">Midnight Signals</div>
-                                        <div class="text-[10px] text-orange-400 mt-0.5">S4:E3 • 14:20 saved</div>
-                                    </div>
-                                </div>
-                                <div class="bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 opacity-60">
-                                    <div class="h-28 bg-zinc-800 flex items-center justify-center">
-                                        <i data-lucide="film" class="w-8 h-8 text-zinc-600"></i>
-                                    </div>
-                                    <div class="p-3">
-                                        <div class="text-xs font-bold text-white">Neon Horizon</div>
-                                        <div class="text-[10px] text-zinc-400 mt-0.5">S1:E2 • 22:10</div>
-                                    </div>
-                                </div>
-                                <div class="bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 opacity-60 hidden md:block">
-                                    <div class="h-28 bg-zinc-800 flex items-center justify-center">
-                                        <i data-lucide="tv" class="w-8 h-8 text-zinc-600"></i>
-                                    </div>
-                                    <div class="p-3">
-                                        <div class="text-xs font-bold text-white">Orbit Seven</div>
-                                        <div class="text-[10px] text-zinc-400 mt-0.5">S3:E1 • 09:40</div>
-                                    </div>
-                                </div>
-                                <div class="bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 opacity-60 hidden md:block">
-                                    <div class="h-28 bg-zinc-800 flex items-center justify-center">
-                                        <i data-lucide="sparkles" class="w-8 h-8 text-zinc-600"></i>
-                                    </div>
-                                    <div class="p-3">
-                                        <div class="text-xs font-bold text-white">Ember City</div>
-                                        <div class="text-[10px] text-zinc-400 mt-0.5">S1:E6 • 40:15</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
+            <section class="scene resume-scene" id="scene-resume" aria-label="Resume choice journey">
+              <div class="resume-card"><span class="saved">Local checkpoint found</span><h2>Welcome back</h2><p>You may have fallen asleep near the end of the episode. Choose where you want to continue.</p><div class="choice-list"><button class="choice" data-choice="checkpoint"><strong>Resume near bedtime checkpoint</strong><span>Return to the last confirmed interaction before the timer completed.</span><span class="time">S1 E3 · 42:15</span></button><button class="choice" data-choice="latest"><strong>Continue from latest position</strong><span>Use the most recent playback position saved on this device.</span><span class="time">S1 E4 · 08:12</span></button></div></div>
+            </section>
+          </div>
         </div>
+      </section>
 
-        <!-- TV DIRECTORY & REMOTE CONTROL SIMULATOR (VISIBLE IN TV MODE) -->
-        <div id="tv-remote-controls" class="mt-6 flex flex-col items-center gap-3">
-            <span class="text-xs text-zinc-400 font-semibold uppercase tracking-wider">TV D-Pad Navigation Simulator</span>
-            <div class="bg-zinc-900 p-3 rounded-2xl border border-zinc-800 shadow-2xl flex items-center gap-4">
-                <!-- D-PAD CONTROLLER -->
-                <div class="grid grid-cols-3 gap-1 w-28 h-28 bg-zinc-950 p-1 rounded-full border border-zinc-800">
-                    <div></div>
-                    <button onclick="simDpad('up')" class="flex items-center justify-center text-zinc-400 hover:text-white bg-zinc-900 hover:bg-orange-600 rounded-t-full transition">▲</button>
-                    <div></div>
-                    <button onclick="simDpad('left')" class="flex items-center justify-center text-zinc-400 hover:text-white bg-zinc-900 hover:bg-orange-600 rounded-l-full transition">◄</button>
-                    <button onclick="simDpad('ok')" class="flex items-center justify-center text-xs font-bold text-white bg-orange-600 rounded-full shadow hover:scale-105 transition">OK</button>
-                    <button onclick="simDpad('right')" class="flex items-center justify-center text-zinc-400 hover:text-white bg-zinc-900 hover:bg-orange-600 rounded-r-full transition">►</button>
-                    <div></div>
-                    <button onclick="simDpad('down')" class="flex items-center justify-center text-zinc-400 hover:text-white bg-zinc-900 hover:bg-orange-600 rounded-b-full transition">▼</button>
-                    <div></div>
-                </div>
-
-                <div class="flex flex-col gap-2">
-                    <button onclick="openTimerMenu()" class="px-3 py-2 bg-orange-600 text-white font-bold text-xs rounded-xl shadow hover:bg-orange-500 transition flex items-center gap-1.5">
-                        <i data-lucide="moon" class="w-4 h-4"></i> Remote Moon Button
-                    </button>
-                    <button onclick="switchStory('US-03')" class="px-3 py-2 bg-zinc-800 text-zinc-300 hover:text-white font-medium text-xs rounded-xl transition flex items-center gap-1.5">
-                        <i data-lucide="home" class="w-4 h-4"></i> TV Home Screen
-                    </button>
-                </div>
-            </div>
-        </div>
-
+      <aside class="side" aria-label="Prototype notes">
+        <section class="card"><h2>Release boundary</h2><ul><li>Manual timer only</li><li>Controlled dim and stop</li><li>Local checkpoint</li><li>Two explicit resume choices</li></ul></section>
+        <section class="card"><h2>Evidence status</h2><div class="status"><div class="status-icon">✓</div><div><b>Viewer problem</b><br><span>Supported by secondary evidence</span></div><div class="status-icon">◇</div><div><b>Business value</b><br><span>Hypothesis; not measured</span></div><div class="status-icon">○</div><div><b>Customer validation</b><br><span>Future authorized research</span></div></div></section>
+        <section class="card"><h2>Interaction events</h2><div class="event-log" id="eventLog" aria-live="polite"><div class="event">prototype_opened · tv</div></div></section>
+      </aside>
     </main>
-
-    <!-- PROTOTYPE LOGIC JAVASCRIPT -->
-    <script>
-        // Initialize Lucide Icons
-        if (window.lucide) lucide.createIcons();
-
-        let currentStory = 'US-01';
-        let currentViewport = 'tv';
-        let isPlaying = true;
-        let lastFocusedElement = null;
-        const checkpointStorageKey = 'after-hours-pilot-checkpoint-v1';
-
-        function formatPosition(totalSeconds) {
-            const minutes = Math.floor(totalSeconds / 60);
-            const seconds = totalSeconds % 60;
-            return `${minutes}:${String(seconds).padStart(2, '0')}`;
-        }
-
-        function savePrototypeCheckpoint() {
-            const state = {
-                schemaVersion: 1,
-                profileScope: 'prototype-profile-alex',
-                titleId: 'prototype-midnight-signals-s1e3',
-                checkpointSeconds: 860,
-                standardPositionSeconds: 2535,
-                timerType: 'manual',
-                savedAt: new Date().toISOString(),
-                expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
-            };
-            try {
-                localStorage.setItem(checkpointStorageKey, JSON.stringify(state));
-            } catch (error) {
-                console.warn('Prototype checkpoint could not be persisted.', error);
-            }
-            renderCheckpoint(state);
-        }
-
-        function loadPrototypeCheckpoint() {
-            try {
-                const raw = localStorage.getItem(checkpointStorageKey);
-                if (!raw) return;
-                const state = JSON.parse(raw);
-                if (state.schemaVersion !== 1 || new Date(state.expiresAt) <= new Date()) {
-                    localStorage.removeItem(checkpointStorageKey);
-                    return;
-                }
-                renderCheckpoint(state);
-            } catch (error) {
-                localStorage.removeItem(checkpointStorageKey);
-            }
-        }
-
-        function renderCheckpoint(state) {
-            const position = formatPosition(state.checkpointSeconds);
-            document.getElementById('checkpoint-position').innerText = position;
-            document.getElementById('checkpoint-metadata').innerText = `Saved by your manual timer • local prototype checkpoint`;
-        }
-
-        // User Story Switcher
-        function switchStory(storyId) {
-            currentStory = storyId;
-            
-            // Hide all views
-            document.getElementById('view-us1').classList.add('hidden');
-            document.getElementById('view-us2').classList.add('hidden');
-            document.getElementById('view-us3').classList.add('hidden');
-
-            // Reset tab styling
-            ['us1', 'us2', 'us3'].forEach(id => {
-                const btn = document.getElementById(`btn-${id}`);
-                btn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 text-zinc-400 hover:text-white";
-            });
-
-            // Activate target view & tab
-            if (storyId === 'US-01') {
-                document.getElementById('view-us1').classList.remove('hidden');
-                document.getElementById('btn-us1').className = "px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 bg-orange-600 text-white shadow-lg";
-            } else if (storyId === 'US-02') {
-                document.getElementById('view-us2').classList.remove('hidden');
-                document.getElementById('btn-us2').className = "px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 bg-orange-600 text-white shadow-lg";
-            } else if (storyId === 'US-03') {
-                document.getElementById('view-us3').classList.remove('hidden');
-                document.getElementById('btn-us3').className = "px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 bg-orange-600 text-white shadow-lg";
-            }
-        }
-
-        // Viewport Switcher
-        function switchViewport(vp) {
-            currentViewport = vp;
-            const frame = document.getElementById('device-frame');
-            const remoteCtrl = document.getElementById('tv-remote-controls');
-
-            // Reset active button styling
-            ['mobile', 'tablet', 'tv'].forEach(id => {
-                const btn = document.getElementById(`btn-vp-${id}`);
-                btn.className = "p-2 rounded-lg text-xs font-medium text-zinc-400 hover:text-white flex items-center gap-1";
-            });
-
-            document.getElementById(`btn-vp-${vp}`).className = "p-2 rounded-lg font-bold text-orange-500 bg-zinc-800 shadow flex items-center gap-1";
-
-            // Resize Frame
-            frame.className = `relative bg-black transition-all duration-500 flex flex-col justify-between viewport-${vp}`;
-
-            // Show/Hide TV Remote Controller
-            if (vp === 'tv') {
-                remoteCtrl.classList.remove('hidden');
-            } else {
-                remoteCtrl.classList.add('hidden');
-            }
-        }
-
-        // US-01 Functions
-        function openTimerMenu() {
-            lastFocusedElement = document.activeElement;
-            document.getElementById('timer-modal').classList.remove('hidden');
-            document.getElementById('close-timer-btn').focus();
-        }
-
-        function closeTimerMenu() {
-            document.getElementById('timer-modal').classList.add('hidden');
-            if (lastFocusedElement) lastFocusedElement.focus();
-        }
-
-        function selectTimer(duration) {
-            closeTimerMenu();
-            
-            // Update active button text
-            document.getElementById('active-timer-label').innerText = `${duration} Timer`;
-
-            // Trigger Toast Notification
-            const toast = document.getElementById('toast-notification');
-            document.getElementById('toast-text').innerText = `Sleep Timer set for ${duration}`;
-            toast.classList.remove('hidden');
-
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 3000);
-        }
-
-        function toggleVideoPlay() {
-            isPlaying = !isPlaying;
-            const icon = document.getElementById('play-icon');
-            if (isPlaying) {
-                icon.setAttribute('data-lucide', 'pause');
-                document.getElementById('play-pause-btn').setAttribute('aria-label', 'Pause playback');
-            } else {
-                icon.setAttribute('data-lucide', 'play');
-                document.getElementById('play-pause-btn').setAttribute('aria-label', 'Resume playback');
-            }
-            if (window.lucide) lucide.createIcons();
-        }
-
-        // US-02 Simulator Functions
-        function updateSimulation(val) {
-            const overlay = document.getElementById('sim-overlay');
-            const lumText = document.getElementById('telemetry-lum');
-            const volText = document.getElementById('telemetry-vol');
-            const timeLabel = document.getElementById('sim-time-label');
-            const badge = document.getElementById('phase-badge');
-
-            if (val < 33) {
-                // Phase 0: Normal
-                overlay.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-                lumText.innerText = '100%';
-                volText.innerText = 'Playing';
-                timeLabel.innerText = 'T - 15:00 min remaining';
-                badge.className = 'px-3 py-1 bg-green-500/20 text-green-400 border border-green-500/30 rounded-full text-xs font-semibold';
-                badge.innerText = 'Phase 0: Normal Playback';
-            } else if (val < 75) {
-                // Phase 1: Video Dimming
-                const opacity = (val - 33) / 42;
-                overlay.style.backgroundColor = `rgba(0, 0, 0, ${opacity * 0.85})`;
-                lumText.innerText = `${Math.round((1 - opacity) * 100)}%`;
-                volText.innerText = '100%';
-                timeLabel.innerText = 'T - 08:00 min (Countdown preview)';
-                badge.className = 'px-3 py-1 bg-orange-500/20 text-orange-400 border border-orange-500/30 rounded-full text-xs font-semibold';
-                badge.innerText = 'Phase 1: Optional Dimming';
-            } else {
-                // Phase 2: Save checkpoint and stop playback
-                overlay.style.backgroundColor = 'rgba(0, 0, 0, 1)';
-                lumText.innerText = '0% (Stopped)';
-                volText.innerText = 'Stopped';
-                timeLabel.innerText = 'T 00:00 (Checkpoint saved)';
-                badge.className = 'px-3 py-1 bg-red-500/20 text-red-400 border border-red-500/30 rounded-full text-xs font-semibold';
-                badge.innerText = 'Phase 2: Controlled Stop';
-                savePrototypeCheckpoint();
-            }
-        }
-
-        function setSimStep(val) {
-            document.getElementById('sim-scrubber').value = val;
-            updateSimulation(val);
-        }
-
-        // US-03 Functions
-        function resumeFromCheckpoint() {
-            switchStory('US-01');
-            const toast = document.getElementById('toast-notification');
-            document.getElementById('toast-text').innerText = 'Resumed from timer checkpoint (14:20)';
-            toast.classList.remove('hidden');
-
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 3500);
-        }
-
-        function resumeFromStandardPosition() {
-            switchStory('US-01');
-            const toast = document.getElementById('toast-notification');
-            document.getElementById('toast-text').innerText = 'Resumed from standard position (42:15)';
-            toast.classList.remove('hidden');
-
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 3500);
-        }
-
-        // D-Pad Simulator Event
-        function simDpad(action) {
-            if (action === 'ok') {
-                openTimerMenu();
-            }
-        }
-
-        document.addEventListener('keydown', event => {
-            const modal = document.getElementById('timer-modal');
-            if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
-                closeTimerMenu();
-            }
-            if (event.key === 'Tab' && !modal.classList.contains('hidden')) {
-                const focusable = [...modal.querySelectorAll('button:not([disabled]), input:not([disabled])')];
-                const first = focusable[0];
-                const last = focusable[focusable.length - 1];
-                if (event.shiftKey && document.activeElement === first) {
-                    event.preventDefault();
-                    last.focus();
-                } else if (!event.shiftKey && document.activeElement === last) {
-                    event.preventDefault();
-                    first.focus();
-                }
-            }
-        });
-
-        loadPrototypeCheckpoint();
-    </script>
+    <footer class="footer"><span><span class="prototype-badge">Concept prototype</span> · No production service, UAT, Netflix telemetry, or measured financial result is represented.</span><a href="https://github.com/dudedumebi-gif/netflix-after-hours-product-case">View evidence trail on GitHub ↗</a></footer>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    (()=>{
+      const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+      const state={story:'timer',device:'tv',playing:true,lastFocus:null,countdown:null};
+      const log=(name,detail='')=>{const row=document.createElement('div');row.className='event';row.textContent=`${name}${detail?' · '+detail:''}`;$('#eventLog').prepend(row);while($('#eventLog').children.length>6)$('#eventLog').lastElementChild.remove()};
+      const toast=(message)=>{const el=$('#toast');el.textContent=message;el.classList.add('show');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('show'),2600)};
+      function setStory(story){state.story=story;$$('.scene').forEach(x=>x.classList.toggle('active',x.id===`scene-${story}`));$$('.story-control').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.story===story)));if(story==='transition')startCountdown();else stopCountdown();log('journey_viewed',story)}
+      function setDevice(device){state.device=device;$('#device').dataset.device=device;$$('.device-control').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.deviceChoice===device)));log('viewport_changed',device)}
+      function startCountdown(){stopCountdown();let n=10;$('#countdown').textContent=n;state.countdown=setInterval(()=>{n-=1;$('#countdown').textContent=Math.max(n,0);if(n<=0){stopCountdown();toast('Playback stopped · checkpoint saved');log('playback_stopped','timer_completed')}},1000)}
+      function stopCountdown(){if(state.countdown){clearInterval(state.countdown);state.countdown=null}}
+      function openDialog(){state.lastFocus=document.activeElement;$('#timerDialog').classList.add('open');$('#timerDialog').setAttribute('aria-hidden','false');$('#closeTimer').focus();log('timer_menu_opened')}
+      function closeDialog(){const d=$('#timerDialog');d.classList.remove('open');d.setAttribute('aria-hidden','true');state.lastFocus?.focus()}
+      $$('.story-control').forEach(b=>b.addEventListener('click',()=>setStory(b.dataset.story)));
+      $$('.device-control').forEach(b=>b.addEventListener('click',()=>setDevice(b.dataset.deviceChoice)));
+      $('#playButton').addEventListener('click',e=>{state.playing=!state.playing;e.currentTarget.textContent=state.playing?'Ⅱ':'▶';e.currentTarget.setAttribute('aria-label',state.playing?'Pause fictional playback':'Play fictional playback');log(state.playing?'playback_started':'playback_paused')});
+      $('#openTimer').addEventListener('click',openDialog);$('#closeTimer').addEventListener('click',closeDialog);$('#timerDialog').addEventListener('click',e=>{if(e.target.id==='timerDialog')closeDialog()});
+      $$('.timer-option').forEach(b=>b.addEventListener('click',()=>{const value=b.dataset.timer;$('#timerLabel').textContent=value;closeDialog();toast(`Timer set: ${value}`);log('timer_set',value)}));
+      $('#keepWatching').addEventListener('click',()=>{stopCountdown();toast('Stop cancelled · playback continues');log('stop_cancelled','viewer_input');setStory('timer')});
+      $('#stopNow').addEventListener('click',()=>{stopCountdown();toast('Playback stopped · local checkpoint saved');log('playback_stopped','manual_confirmation')});
+      $$('.choice').forEach(b=>b.addEventListener('click',()=>{toast(b.dataset.choice==='checkpoint'?'Resuming from bedtime checkpoint':'Continuing from latest position');log('resume_choice_selected',b.dataset.choice)}));
+      document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#timerDialog').classList.contains('open'))closeDialog();if(e.key==='Tab'&&$('#timerDialog').classList.contains('open')){const f=$$('button',$('#timerDialog'));const first=f[0],last=f[f.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
+      window.__AFTER_HOURS__={setStory,setDevice,state};
+    })();
+  </script>
 </body>
 </html>

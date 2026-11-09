@@ -1,8 +1,9 @@
 # Gate 4 Decision Recommendation
 
-**Decision date:** 2026-11-08  
+**Recommendation date:** 2026-11-08  
+**Approval date:** 2026-11-09  
 **Gate question:** Is there a positive value case under conservative assumptions?  
-**Recommendation:** Do not approve a positive financial case; mark Gate 4 as not demonstrated
+**Approved disposition:** Gate 4 review complete; positive financial case not demonstrated
 
 ## Decision basis
 
@@ -27,7 +28,7 @@ For portfolio purposes, the defensible conclusion is:
 
 ## Gate disposition
 
-Gate 4 should remain **not demonstrated**, rather than failed. The product hypothesis is not disproven; the investment conclusion cannot be evaluated with the evidence available to an independent portfolio case.
+Gate 4 is closed as **not demonstrated**, rather than failed. The product hypothesis is not disproven; the investment conclusion cannot be evaluated with the evidence available to an independent portfolio case. Approval of this disposition is not approval of a positive business case.
 
 ## Conditions for reopening Gate 4
 

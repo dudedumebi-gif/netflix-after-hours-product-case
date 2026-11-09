@@ -14,13 +14,15 @@
 | DEC-008 | Gate 1 research questions, participant criteria, methods, evidence standards, and proposed decision thresholds are approved. | Approved - 2026-11-08 |
 | DEC-009 | Gate 2 is approved as a conditional pass. Phase 3 will proceed with the narrowed manual timer, controlled stop, checkpoint, and resume-choice pilot. Unsupported health, wearable, conversion, retention, and bandwidth claims remain excluded. | Approved - 2026-11-08 |
 | DEC-010 | Gate 3 is conditionally approved. Phase 4 may proceed while rendered-browser and assistive-technology verification remain explicit carry-forward conditions. | Approved - 2026-11-08 |
+| DEC-011 | Gate 4 disposition is approved. The case may close as a completed concept-to-decision portfolio case, while the positive financial case remains not demonstrated and all missing internal evidence remains explicit. | Approved - 2026-11-09 |
+| DEC-012 | The pre-research concept artifact suite is superseded and retained under `archive/original-concept-superseded/`. The evidence-aligned release is the active portfolio version. | Approved - 2026-11-09 |
 
 ## Gate sequence
 
 - **Gate 1:** Approve research questions, hypotheses, methods, and evidence standards.
 - **Gate 2:** Confirm that the customer problem is sufficiently frequent, painful, and addressable.
 - **Gate 3:** Confirm that the pilot experience and proposed implementation have no critical usability, privacy, or feasibility blocker.
-- **Gate 4:** Confirm a positive economic case under conservative assumptions.
+- **Gate 4:** Determine whether a positive economic case can be demonstrated under conservative assumptions. Approved disposition: not demonstrated with available public evidence.
 
 ## Change control
 

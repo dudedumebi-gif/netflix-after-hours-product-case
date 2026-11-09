@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>After Hours — Independent Streaming Product Prototype</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #09090b;
+            color: #f4f4f5;
+            user-select: auto;
+        }
+
+        button:focus-visible, input:focus-visible {
+            outline: 3px solid #fb923c;
+            outline-offset: 3px;
+        }
+
+        /* Device Frame Styling */
+        .viewport-mobile {
+            width: min(380px, calc(100vw - 32px));
+            height: 780px;
+            border-radius: 44px;
+            border: 10px solid #27272a;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        .viewport-tablet {
+            width: min(820px, calc(100vw - 32px));
+            height: 580px;
+            border-radius: 28px;
+            border: 12px solid #27272a;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+        }
+
+        .viewport-tv {
+            width: min(1060px, calc(100vw - 32px));
+            height: 600px;
+            border-radius: 16px;
+            border: 14px solid #18181b;
+            box-shadow: 0 30px 60px -12px rgba(229, 9, 20, 0.15), 0 0 40px rgba(0,0,0,0.9);
+        }
+
+        /* Video Glow & Animations */
+        .ambient-glow {
+            box-shadow: 0 0 80px rgba(255, 69, 0, 0.2);
+        }
+
+        /* Custom Scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #141414;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff4500;
+        }
+
+        /* Pulsing Audio Waveform Bar */
+        @keyframes soundWave {
+            0%, 100% { height: 6px; }
+            50% { height: 28px; }
+        }
+        .animate-wave {
+            animation: soundWave 1.2s ease-in-out infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-start p-4 md:p-6 overflow-x-hidden">
+
+    <!-- TOP NAVIGATION & PROTOTYPE CONTROLLER -->
+    <header class="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-between gap-4 mb-6 bg-zinc-900/90 backdrop-blur-md p-4 rounded-2xl border border-zinc-800 shadow-2xl">
+        <div class="flex items-center gap-3">
+            <div class="bg-red-600 text-white font-black tracking-tighter px-3 py-1 rounded text-sm shadow-md">STREAMING CONCEPT</div>
+            <div>
+                <h1 class="font-extrabold text-lg text-white flex items-center gap-2">
+                    AFTER HOURS <span class="bg-orange-600/20 text-orange-400 text-xs font-semibold px-2 py-0.5 rounded-full border border-orange-500/30">PROTOTYPE</span>
+                </h1>
+                <p class="text-xs text-zinc-400">Independent portfolio concept • Not affiliated with Netflix</p>
+            </div>
+        </div>
+
+        <!-- User Story Scenario Selector -->
+        <div class="flex items-center gap-1 bg-zinc-950 p-1 rounded-xl border border-zinc-800">
+            <button onclick="switchStory('US-01')" id="btn-us1" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 bg-orange-600 text-white shadow-lg">
+                <i data-lucide="moon" class="w-3.5 h-3.5"></i> US-01: Timer Setup
+            </button>
+            <button onclick="switchStory('US-02')" id="btn-us2" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 text-zinc-400 hover:text-white">
+                <i data-lucide="sliders" class="w-3.5 h-3.5"></i> US-02: Stop Transition
+            </button>
+            <button onclick="switchStory('US-03')" id="btn-us3" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 text-zinc-400 hover:text-white">
+                <i data-lucide="bookmark" class="w-3.5 h-3.5"></i> US-03: Resume Choice
+            </button>
+        </div>
+
+        <!-- Viewport Device Switcher -->
+        <div class="flex items-center gap-1 bg-zinc-950 p-1 rounded-xl border border-zinc-800">
+            <button onclick="switchViewport('mobile')" id="btn-vp-mobile" class="p-2 rounded-lg text-xs font-medium text-zinc-400 hover:text-white flex items-center gap-1">
+                <i data-lucide="smartphone" class="w-4 h-4"></i> <span class="hidden sm:inline">Mobile</span>
+            </button>
+            <button onclick="switchViewport('tablet')" id="btn-vp-tablet" class="p-2 rounded-lg text-xs font-medium text-zinc-400 hover:text-white flex items-center gap-1">
+                <i data-lucide="tablet" class="w-4 h-4"></i> <span class="hidden sm:inline">Tablet</span>
+            </button>
+            <button onclick="switchViewport('tv')" id="btn-vp-tv" class="p-2 rounded-lg font-bold text-orange-500 bg-zinc-800 shadow flex items-center gap-1">
+                <i data-lucide="tv" class="w-4 h-4"></i> <span class="hidden sm:inline">TV 65"</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN PROTOTYPE WORKSPACE CONTAINER -->
+    <main class="w-full flex-1 flex flex-col items-center justify-center relative">
+
+        <!-- DEVICE FRAME WRAPPER -->
+        <div id="device-frame" class="viewport-tv bg-black relative overflow-hidden transition-all duration-500 flex flex-col justify-between">
+
+            <!-- SCREEN CONTENT DISPLAY -->
+            <div id="screen-container" class="w-full h-full relative overflow-hidden flex flex-col justify-between bg-black">
+
+                <!-- ========================================== -->
+                <!-- VIEW 1: USER STORY 01 — VIDEO PLAYER & TIMER -->
+                <!-- ========================================== -->
+                <div id="view-us1" class="w-full h-full relative flex flex-col justify-between bg-zinc-950 overflow-hidden">
+                    <!-- Fake Video Background Canvas -->
+                    <div class="absolute inset-0 z-0 bg-cover bg-center transition-all duration-700" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/60"></div>
+                        <!-- Ambient Night Particles Overlay -->
+                        <div class="absolute inset-0 opacity-40 bg-[radial-gradient(#ff4500_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                    </div>
+
+                    <!-- Top Player Header Controls -->
+                    <div class="relative z-10 p-6 flex items-center justify-between bg-gradient-to-b from-black/90 to-transparent">
+                        <div class="flex items-center gap-4">
+                            <button aria-label="Return to previous screen" class="p-2 rounded-full bg-zinc-900/60 text-white hover:bg-zinc-800">
+                                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                            </button>
+                            <div>
+                                <span class="text-xs font-bold text-orange-500 tracking-wider uppercase flex items-center gap-1">
+                                    <i data-lucide="moon" class="w-3 h-3"></i> After Hours Concept
+                                </span>
+                                <h2 id="player-title" class="text-lg md:text-xl font-bold text-white">Midnight Signals — S1:E3 "The Crossing"</h2>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs bg-zinc-800/80 px-2.5 py-1 rounded text-zinc-300 font-mono">4K Ultra HD</span>
+                            <span class="text-xs bg-orange-600/20 text-orange-400 border border-orange-500/40 px-2.5 py-1 rounded font-medium flex items-center gap-1">
+                                <i data-lucide="sparkles" class="w-3 h-3"></i> Spatial Audio
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Center Play Pause Simulation Target -->
+                    <div class="relative z-10 self-center flex items-center justify-center my-auto">
+                        <button id="play-pause-btn" aria-label="Pause playback" onclick="toggleVideoPlay()" class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-orange-600/90 text-white flex items-center justify-center hover:scale-105 transition shadow-2xl shadow-orange-600/40 backdrop-blur-md border border-orange-400/50">
+                            <i id="play-icon" data-lucide="pause" class="w-8 h-8 fill-current"></i>
+                        </button>
+                    </div>
+
+                    <!-- BOTTOM PLAYER CONTROL BAR -->
+                    <div class="relative z-10 p-6 bg-gradient-to-t from-black via-black/90 to-transparent flex flex-col gap-3">
+                        <!-- Progress Scrubber -->
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs text-zinc-400 font-mono">42:15</span>
+                            <div class="flex-1 h-1.5 bg-zinc-800 rounded-full overflow-hidden cursor-pointer relative group">
+                                <div class="w-3/4 h-full bg-orange-600 rounded-full relative">
+                                    <div class="absolute right-0 top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-white rounded-full shadow-md scale-0 group-hover:scale-100 transition"></div>
+                                </div>
+                            </div>
+                            <span class="text-[11px] text-zinc-400 font-mono">-38:40</span>
+                        </div>
+
+                        <!-- Action Toolbar -->
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2 md:gap-4">
+                                <button aria-label="Skip backward" class="p-2 text-zinc-300 hover:text-white rounded-lg hover:bg-zinc-800/60">
+                                    <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
+                                </button>
+                                <button aria-label="Skip forward" class="p-2 text-zinc-300 hover:text-white rounded-lg hover:bg-zinc-800/60">
+                                    <i data-lucide="rotate-cw" class="w-5 h-5"></i>
+                                </button>
+                                <button aria-label="Volume controls" class="p-2 text-zinc-300 hover:text-white rounded-lg hover:bg-zinc-800/60">
+                                    <i data-lucide="volume-2" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+
+                            <div class="flex items-center gap-2 md:gap-3">
+                                <!-- US-01 PROMINENT BEDTIME MOON BUTTON -->
+                                <button id="moon-timer-btn" aria-haspopup="dialog" aria-controls="timer-modal" onclick="openTimerMenu()" class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-orange-600 text-white font-semibold text-xs md:text-sm hover:bg-orange-500 transition shadow-lg shadow-orange-600/30 border border-orange-400/40 animate-pulse">
+                                    <i data-lucide="moon" class="w-4 h-4 fill-current"></i>
+                                    <span id="active-timer-label">Bedtime Timer</span>
+                                </button>
+
+                                <button aria-label="Subtitle settings" class="p-2 text-zinc-300 hover:text-white rounded-lg hover:bg-zinc-800/60">
+                                    <i data-lucide="subtitles" class="w-5 h-5"></i>
+                                </button>
+                                <button aria-label="Episode and playback options" class="p-2 text-zinc-300 hover:text-white rounded-lg hover:bg-zinc-800/60">
+                                    <i data-lucide="layers" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LOW-LUMINESCENCE AMBER TIMER MENU OVERLAY (US-01 KEY SPEC) -->
+                    <div id="timer-modal" role="dialog" aria-modal="true" aria-labelledby="timer-dialog-title" class="hidden absolute inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4">
+                        <div class="w-full max-w-sm bg-zinc-950 border border-orange-500/30 rounded-2xl p-6 shadow-2xl flex flex-col gap-4 text-center">
+                            <div class="flex items-center justify-between border-b border-zinc-800 pb-3">
+                                <div class="flex items-center gap-2 text-orange-500">
+                                    <i data-lucide="moon" class="w-5 h-5"></i>
+                                    <h3 id="timer-dialog-title" class="font-bold text-white text-base">After Hours</h3>
+                                </div>
+                                <button id="close-timer-btn" aria-label="Close timer choices" onclick="closeTimerMenu()" class="text-zinc-400 hover:text-white p-1">
+                                    <i data-lucide="x" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                            <p class="text-xs text-zinc-400">Choose when playback should stop. An optional dimming transition previews the stop and a local checkpoint is saved for your next session.</p>
+
+                            <!-- Timer Options Grid -->
+                            <div class="grid grid-cols-2 gap-2.5 my-2">
+                                <button onclick="selectTimer('15m')" class="p-3 bg-zinc-900 border border-zinc-800 hover:border-orange-500 hover:bg-orange-950/40 text-white font-medium text-sm rounded-xl transition flex flex-col items-center gap-1">
+                                    <span class="text-base font-bold text-orange-400">15 min</span>
+                                    <span class="text-[10px] text-zinc-400">Short timer</span>
+                                </button>
+                                <button onclick="selectTimer('30m')" class="p-3 bg-zinc-900 border border-zinc-800 hover:border-orange-500 hover:bg-orange-950/40 text-white font-medium text-sm rounded-xl transition flex flex-col items-center gap-1">
+                                    <span class="text-base font-bold text-orange-400">30 min</span>
+                                    <span class="text-[10px] text-zinc-400">Recommended</span>
+                                </button>
+                                <button onclick="selectTimer('45m')" class="p-3 bg-zinc-900 border border-zinc-800 hover:border-orange-500 hover:bg-orange-950/40 text-white font-medium text-sm rounded-xl transition flex flex-col items-center gap-1">
+                                    <span class="text-base font-bold text-orange-400">45 min</span>
+                                    <span class="text-[10px] text-zinc-400">Extended timer</span>
+                                </button>
+                                <button onclick="selectTimer('End of Ep')" class="p-3 bg-zinc-900 border border-zinc-800 hover:border-orange-500 hover:bg-orange-950/40 text-white font-medium text-sm rounded-xl transition flex flex-col items-center gap-1">
+                                    <span class="text-base font-bold text-orange-400">End of Ep</span>
+                                    <span class="text-[10px] text-zinc-400">Finish episode</span>
+                                </button>
+                            </div>
+
+                            <!-- Evidence-backed pilot scope note -->
+                            <div class="p-3 bg-gradient-to-r from-orange-950/40 to-zinc-900 border border-orange-500/30 rounded-xl flex items-center text-left">
+                                <div class="flex items-center gap-2.5">
+                                    <i data-lucide="shield-check" class="w-5 h-5 text-orange-400"></i>
+                                    <div>
+                                        <div class="text-xs font-bold text-white">Manual pilot control</div>
+                                        <div class="text-[10px] text-zinc-400">No wearable or health data is used in this concept flow.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TOAST CONFIRMATION NOTIFICATION -->
+                    <div id="toast-notification" role="status" aria-live="polite" class="hidden absolute top-6 left-1/2 -translate-x-1/2 z-50 bg-orange-600 text-white px-4 py-2.5 rounded-full shadow-2xl flex items-center gap-2 border border-orange-300 text-xs font-bold animate-bounce">
+                        <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                        <span id="toast-text">Sleep Timer set for 30 min</span>
+                    </div>
+                </div>
+
+                <!-- ========================================== -->
+                <!-- VIEW 2: USER STORY 02 — DIMMING & AUDIO SIMULATOR -->
+                <!-- ========================================== -->
+                <div id="view-us2" class="hidden w-full h-full relative bg-zinc-950 p-6 flex flex-col justify-between overflow-hidden">
+                    <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
+                        <div>
+                            <span class="text-xs font-bold text-orange-500 uppercase tracking-widest">US-02 Simulator</span>
+                            <h2 class="text-xl font-bold text-white">Countdown & Controlled Stop Preview</h2>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span id="phase-badge" aria-live="polite" class="px-3 py-1 bg-green-500/20 text-green-400 border border-green-500/30 rounded-full text-xs font-semibold">
+                                Phase 0: Normal Playback
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- VISUAL SIMULATOR DISPLAY CANVAS -->
+                    <div id="sim-canvas" class="flex-1 my-4 rounded-2xl bg-zinc-900 border border-zinc-800 relative overflow-hidden flex flex-col items-center justify-center transition-all duration-700">
+                        <!-- Simulated Video Screen Content -->
+                        <div id="sim-video" class="absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop');">
+                            <div id="sim-overlay" class="absolute inset-0 bg-black/0 transition-all duration-1000"></div>
+                        </div>
+
+                        <!-- Real-time Metrics Layer -->
+                        <div class="relative z-10 bg-black/80 backdrop-blur-md p-6 rounded-2xl border border-zinc-700 text-center flex flex-col gap-4 max-w-md w-full shadow-2xl">
+                            <h3 class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Live System Telemetry</h3>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-zinc-900 p-3 rounded-xl border border-zinc-800">
+                                    <div class="text-[10px] text-zinc-400 uppercase">Display brightness</div>
+                                    <div id="telemetry-lum" class="text-xl font-black text-orange-400 font-mono">100%</div>
+                                </div>
+                                <div class="bg-zinc-900 p-3 rounded-xl border border-zinc-800">
+                                    <div class="text-[10px] text-zinc-400 uppercase">Playback state</div>
+                                    <div id="telemetry-vol" class="text-xl font-black text-orange-400 font-mono">Playing</div>
+                                </div>
+                            </div>
+
+                            <!-- Viewer control guardrail -->
+                            <div>
+                                <div class="text-[10px] text-zinc-400 uppercase mb-2">Viewer control guardrail</div>
+                                <div class="flex items-center justify-center gap-2 h-10 bg-zinc-950 rounded-xl p-2 border border-zinc-800 text-xs text-zinc-300">
+                                    <i data-lucide="gamepad-2" class="w-4 h-4 text-orange-400"></i>
+                                    Any remote or touch input cancels the stop transition
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TIMELINE PHASE CONTROLLER -->
+                    <div class="bg-zinc-900 p-4 rounded-2xl border border-zinc-800 flex flex-col gap-3">
+                        <div class="flex justify-between text-xs font-medium text-zinc-400">
+                            <span>Playback Timeline</span>
+                            <span id="sim-time-label" class="text-orange-400 font-mono">T - 15:00 min remaining</span>
+                        </div>
+                        
+                        <input aria-label="Stop transition progress" type="range" id="sim-scrubber" min="0" max="100" value="0" oninput="updateSimulation(this.value)" class="w-full accent-orange-500 cursor-pointer">
+
+                        <div class="grid grid-cols-3 gap-2 text-center text-[10px] font-semibold text-zinc-400">
+                            <button onclick="setSimStep(0)" class="p-2 bg-zinc-950 rounded-lg hover:text-white border border-zinc-800">1. Normal Playback</button>
+                            <button onclick="setSimStep(50)" class="p-2 bg-zinc-950 rounded-lg hover:text-white border border-zinc-800">2. Countdown & Optional Dimming</button>
+                            <button onclick="setSimStep(100)" class="p-2 bg-zinc-950 rounded-lg hover:text-white border border-zinc-800">3. Checkpoint & Stop</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================== -->
+                <!-- VIEW 3: USER STORY 03 — RESUME CHOICE -->
+                <!-- ========================================== -->
+                <div id="view-us3" class="hidden w-full h-full relative bg-zinc-950 flex flex-col overflow-y-auto">
+                    <!-- Netflix Header Navbar -->
+                    <div class="p-6 flex items-center justify-between border-b border-zinc-800/80 bg-black/90 backdrop-blur-md sticky top-0 z-30">
+                        <div class="flex items-center gap-6">
+                            <span class="text-sm font-black text-red-500 tracking-tight">STREAMING CONCEPT</span>
+                            <div class="hidden md:flex items-center gap-4 text-xs font-medium text-zinc-300">
+                                <span class="text-white font-bold">Home</span>
+                                <span>Series</span>
+                                <span>Movies</span>
+                                <span>New & Popular</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button aria-label="Search" class="p-1 text-zinc-300 hover:text-white"><i data-lucide="search" class="w-5 h-5"></i></button>
+                            <button aria-label="Notifications" class="p-1 text-zinc-300 hover:text-white"><i data-lucide="bell" class="w-5 h-5"></i></button>
+                            <div class="w-8 h-8 rounded-lg bg-orange-600 flex items-center justify-center font-bold text-xs">AH</div>
+                        </div>
+                    </div>
+
+                    <!-- DASHBOARD CONTENT CONTAINER -->
+                    <div class="p-6 flex flex-col gap-6">
+                        
+                        <!-- PROMINENT CHECKPOINT CHOICE BANNER (US-03 KEY SPEC) -->
+                        <div class="w-full bg-gradient-to-r from-orange-950 via-zinc-900 to-black border-2 border-orange-500/50 rounded-2xl p-6 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6 group hover:border-orange-500 transition-all">
+                            <!-- Background Subtle Glow -->
+                            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-orange-600/10 rounded-full blur-3xl"></div>
+
+                            <div class="flex items-start gap-4 z-10">
+                                <div class="p-3 bg-orange-600/20 text-orange-400 border border-orange-500/30 rounded-2xl shrink-0 mt-1">
+                                    <i data-lucide="moon" class="w-7 h-7"></i>
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span class="bg-orange-600 text-white font-bold text-[10px] uppercase px-2 py-0.5 rounded">After Hours Checkpoint</span>
+                                        <span id="checkpoint-metadata" class="text-xs text-zinc-400">Saved when your timer stopped playback at 11:42 PM</span>
+                                    </div>
+                                    <h2 class="text-xl md:text-2xl font-black text-white">Where would you like to resume Midnight Signals?</h2>
+                                    <p class="text-xs text-zinc-300 mt-1">Your timer checkpoint is <span id="checkpoint-position" class="text-orange-400 font-mono font-bold">14:20</span> in Episode 3. Your standard playback position is still available.</p>
+                                </div>
+                            </div>
+
+                            <!-- Interactive Resume Actions -->
+                            <div class="flex items-center gap-3 w-full md:w-auto z-10">
+                                <button onclick="resumeFromCheckpoint()" class="flex-1 md:flex-none px-5 py-3 bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs md:text-sm rounded-xl shadow-lg shadow-orange-600/30 flex items-center justify-center gap-2 transition hover:scale-105">
+                                    <i data-lucide="play" class="w-4 h-4 fill-current"></i> Use checkpoint 14:20
+                                </button>
+                                <button onclick="resumeFromStandardPosition()" class="px-4 py-3 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-semibold text-xs md:text-sm rounded-xl transition">
+                                    Use standard position 42:15
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Standard Continue Watching Row -->
+                        <div>
+                            <h3 class="text-sm font-bold text-white mb-3">Continue Watching for Alex</h3>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div class="bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800">
+                                    <div class="h-28 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400&auto=format&fit=crop');"></div>
+                                    <div class="p-3">
+                                        <div class="text-xs font-bold text-white truncate">Midnight Signals</div>
+                                        <div class="text-[10px] text-orange-400 mt-0.5">S4:E3 • 14:20 saved</div>
+                                    </div>
+                                </div>
+                                <div class="bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 opacity-60">
+                                    <div class="h-28 bg-zinc-800 flex items-center justify-center">
+                                        <i data-lucide="film" class="w-8 h-8 text-zinc-600"></i>
+                                    </div>
+                                    <div class="p-3">
+                                        <div class="text-xs font-bold text-white">Neon Horizon</div>
+                                        <div class="text-[10px] text-zinc-400 mt-0.5">S1:E2 • 22:10</div>
+                                    </div>
+                                </div>
+                                <div class="bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 opacity-60 hidden md:block">
+                                    <div class="h-28 bg-zinc-800 flex items-center justify-center">
+                                        <i data-lucide="tv" class="w-8 h-8 text-zinc-600"></i>
+                                    </div>
+                                    <div class="p-3">
+                                        <div class="text-xs font-bold text-white">Orbit Seven</div>
+                                        <div class="text-[10px] text-zinc-400 mt-0.5">S3:E1 • 09:40</div>
+                                    </div>
+                                </div>
+                                <div class="bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 opacity-60 hidden md:block">
+                                    <div class="h-28 bg-zinc-800 flex items-center justify-center">
+                                        <i data-lucide="sparkles" class="w-8 h-8 text-zinc-600"></i>
+                                    </div>
+                                    <div class="p-3">
+                                        <div class="text-xs font-bold text-white">Ember City</div>
+                                        <div class="text-[10px] text-zinc-400 mt-0.5">S1:E6 • 40:15</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- TV DIRECTORY & REMOTE CONTROL SIMULATOR (VISIBLE IN TV MODE) -->
+        <div id="tv-remote-controls" class="mt-6 flex flex-col items-center gap-3">
+            <span class="text-xs text-zinc-400 font-semibold uppercase tracking-wider">TV D-Pad Navigation Simulator</span>
+            <div class="bg-zinc-900 p-3 rounded-2xl border border-zinc-800 shadow-2xl flex items-center gap-4">
+                <!-- D-PAD CONTROLLER -->
+                <div class="grid grid-cols-3 gap-1 w-28 h-28 bg-zinc-950 p-1 rounded-full border border-zinc-800">
+                    <div></div>
+                    <button onclick="simDpad('up')" class="flex items-center justify-center text-zinc-400 hover:text-white bg-zinc-900 hover:bg-orange-600 rounded-t-full transition">▲</button>
+                    <div></div>
+                    <button onclick="simDpad('left')" class="flex items-center justify-center text-zinc-400 hover:text-white bg-zinc-900 hover:bg-orange-600 rounded-l-full transition">◄</button>
+                    <button onclick="simDpad('ok')" class="flex items-center justify-center text-xs font-bold text-white bg-orange-600 rounded-full shadow hover:scale-105 transition">OK</button>
+                    <button onclick="simDpad('right')" class="flex items-center justify-center text-zinc-400 hover:text-white bg-zinc-900 hover:bg-orange-600 rounded-r-full transition">►</button>
+                    <div></div>
+                    <button onclick="simDpad('down')" class="flex items-center justify-center text-zinc-400 hover:text-white bg-zinc-900 hover:bg-orange-600 rounded-b-full transition">▼</button>
+                    <div></div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <button onclick="openTimerMenu()" class="px-3 py-2 bg-orange-600 text-white font-bold text-xs rounded-xl shadow hover:bg-orange-500 transition flex items-center gap-1.5">
+                        <i data-lucide="moon" class="w-4 h-4"></i> Remote Moon Button
+                    </button>
+                    <button onclick="switchStory('US-03')" class="px-3 py-2 bg-zinc-800 text-zinc-300 hover:text-white font-medium text-xs rounded-xl transition flex items-center gap-1.5">
+                        <i data-lucide="home" class="w-4 h-4"></i> TV Home Screen
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- PROTOTYPE LOGIC JAVASCRIPT -->
+    <script>
+        // Initialize Lucide Icons
+        if (window.lucide) lucide.createIcons();
+
+        let currentStory = 'US-01';
+        let currentViewport = 'tv';
+        let isPlaying = true;
+        let lastFocusedElement = null;
+        const checkpointStorageKey = 'after-hours-pilot-checkpoint-v1';
+
+        function formatPosition(totalSeconds) {
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            return `${minutes}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        function savePrototypeCheckpoint() {
+            const state = {
+                schemaVersion: 1,
+                profileScope: 'prototype-profile-alex',
+                titleId: 'prototype-midnight-signals-s1e3',
+                checkpointSeconds: 860,
+                standardPositionSeconds: 2535,
+                timerType: 'manual',
+                savedAt: new Date().toISOString(),
+                expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
+            };
+            try {
+                localStorage.setItem(checkpointStorageKey, JSON.stringify(state));
+            } catch (error) {
+                console.warn('Prototype checkpoint could not be persisted.', error);
+            }
+            renderCheckpoint(state);
+        }
+
+        function loadPrototypeCheckpoint() {
+            try {
+                const raw = localStorage.getItem(checkpointStorageKey);
+                if (!raw) return;
+                const state = JSON.parse(raw);
+                if (state.schemaVersion !== 1 || new Date(state.expiresAt) <= new Date()) {
+                    localStorage.removeItem(checkpointStorageKey);
+                    return;
+                }
+                renderCheckpoint(state);
+            } catch (error) {
+                localStorage.removeItem(checkpointStorageKey);
+            }
+        }
+
+        function renderCheckpoint(state) {
+            const position = formatPosition(state.checkpointSeconds);
+            document.getElementById('checkpoint-position').innerText = position;
+            document.getElementById('checkpoint-metadata').innerText = `Saved by your manual timer • local prototype checkpoint`;
+        }
+
+        // User Story Switcher
+        function switchStory(storyId) {
+            currentStory = storyId;
+            
+            // Hide all views
+            document.getElementById('view-us1').classList.add('hidden');
+            document.getElementById('view-us2').classList.add('hidden');
+            document.getElementById('view-us3').classList.add('hidden');
+
+            // Reset tab styling
+            ['us1', 'us2', 'us3'].forEach(id => {
+                const btn = document.getElementById(`btn-${id}`);
+                btn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 text-zinc-400 hover:text-white";
+            });
+
+            // Activate target view & tab
+            if (storyId === 'US-01') {
+                document.getElementById('view-us1').classList.remove('hidden');
+                document.getElementById('btn-us1').className = "px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 bg-orange-600 text-white shadow-lg";
+            } else if (storyId === 'US-02') {
+                document.getElementById('view-us2').classList.remove('hidden');
+                document.getElementById('btn-us2').className = "px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 bg-orange-600 text-white shadow-lg";
+            } else if (storyId === 'US-03') {
+                document.getElementById('view-us3').classList.remove('hidden');
+                document.getElementById('btn-us3').className = "px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 bg-orange-600 text-white shadow-lg";
+            }
+        }
+
+        // Viewport Switcher
+        function switchViewport(vp) {
+            currentViewport = vp;
+            const frame = document.getElementById('device-frame');
+            const remoteCtrl = document.getElementById('tv-remote-controls');
+
+            // Reset active button styling
+            ['mobile', 'tablet', 'tv'].forEach(id => {
+                const btn = document.getElementById(`btn-vp-${id}`);
+                btn.className = "p-2 rounded-lg text-xs font-medium text-zinc-400 hover:text-white flex items-center gap-1";
+            });
+
+            document.getElementById(`btn-vp-${vp}`).className = "p-2 rounded-lg font-bold text-orange-500 bg-zinc-800 shadow flex items-center gap-1";
+
+            // Resize Frame
+            frame.className = `relative bg-black transition-all duration-500 flex flex-col justify-between viewport-${vp}`;
+
+            // Show/Hide TV Remote Controller
+            if (vp === 'tv') {
+                remoteCtrl.classList.remove('hidden');
+            } else {
+                remoteCtrl.classList.add('hidden');
+            }
+        }
+
+        // US-01 Functions
+        function openTimerMenu() {
+            lastFocusedElement = document.activeElement;
+            document.getElementById('timer-modal').classList.remove('hidden');
+            document.getElementById('close-timer-btn').focus();
+        }
+
+        function closeTimerMenu() {
+            document.getElementById('timer-modal').classList.add('hidden');
+            if (lastFocusedElement) lastFocusedElement.focus();
+        }
+
+        function selectTimer(duration) {
+            closeTimerMenu();
+            
+            // Update active button text
+            document.getElementById('active-timer-label').innerText = `${duration} Timer`;
+
+            // Trigger Toast Notification
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-text').innerText = `Sleep Timer set for ${duration}`;
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        function toggleVideoPlay() {
+            isPlaying = !isPlaying;
+            const icon = document.getElementById('play-icon');
+            if (isPlaying) {
+                icon.setAttribute('data-lucide', 'pause');
+                document.getElementById('play-pause-btn').setAttribute('aria-label', 'Pause playback');
+            } else {
+                icon.setAttribute('data-lucide', 'play');
+                document.getElementById('play-pause-btn').setAttribute('aria-label', 'Resume playback');
+            }
+            if (window.lucide) lucide.createIcons();
+        }
+
+        // US-02 Simulator Functions
+        function updateSimulation(val) {
+            const overlay = document.getElementById('sim-overlay');
+            const lumText = document.getElementById('telemetry-lum');
+            const volText = document.getElementById('telemetry-vol');
+            const timeLabel = document.getElementById('sim-time-label');
+            const badge = document.getElementById('phase-badge');
+
+            if (val < 33) {
+                // Phase 0: Normal
+                overlay.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+                lumText.innerText = '100%';
+                volText.innerText = 'Playing';
+                timeLabel.innerText = 'T - 15:00 min remaining';
+                badge.className = 'px-3 py-1 bg-green-500/20 text-green-400 border border-green-500/30 rounded-full text-xs font-semibold';
+                badge.innerText = 'Phase 0: Normal Playback';
+            } else if (val < 75) {
+                // Phase 1: Video Dimming
+                const opacity = (val - 33) / 42;
+                overlay.style.backgroundColor = `rgba(0, 0, 0, ${opacity * 0.85})`;
+                lumText.innerText = `${Math.round((1 - opacity) * 100)}%`;
+                volText.innerText = '100%';
+                timeLabel.innerText = 'T - 08:00 min (Countdown preview)';
+                badge.className = 'px-3 py-1 bg-orange-500/20 text-orange-400 border border-orange-500/30 rounded-full text-xs font-semibold';
+                badge.innerText = 'Phase 1: Optional Dimming';
+            } else {
+                // Phase 2: Save checkpoint and stop playback
+                overlay.style.backgroundColor = 'rgba(0, 0, 0, 1)';
+                lumText.innerText = '0% (Stopped)';
+                volText.innerText = 'Stopped';
+                timeLabel.innerText = 'T 00:00 (Checkpoint saved)';
+                badge.className = 'px-3 py-1 bg-red-500/20 text-red-400 border border-red-500/30 rounded-full text-xs font-semibold';
+                badge.innerText = 'Phase 2: Controlled Stop';
+                savePrototypeCheckpoint();
+            }
+        }
+
+        function setSimStep(val) {
+            document.getElementById('sim-scrubber').value = val;
+            updateSimulation(val);
+        }
+
+        // US-03 Functions
+        function resumeFromCheckpoint() {
+            switchStory('US-01');
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-text').innerText = 'Resumed from timer checkpoint (14:20)';
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3500);
+        }
+
+        function resumeFromStandardPosition() {
+            switchStory('US-01');
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-text').innerText = 'Resumed from standard position (42:15)';
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3500);
+        }
+
+        // D-Pad Simulator Event
+        function simDpad(action) {
+            if (action === 'ok') {
+                openTimerMenu();
+            }
+        }
+
+        document.addEventListener('keydown', event => {
+            const modal = document.getElementById('timer-modal');
+            if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeTimerMenu();
+            }
+            if (event.key === 'Tab' && !modal.classList.contains('hidden')) {
+                const focusable = [...modal.querySelectorAll('button:not([disabled]), input:not([disabled])')];
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (event.shiftKey && document.activeElement === first) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (!event.shiftKey && document.activeElement === last) {
+                    event.preventDefault();
+                    first.focus();
+                }
+            }
+        });
+
+        loadPrototypeCheckpoint();
+    </script>
+</body>
+</html>

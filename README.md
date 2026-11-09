@@ -1,12 +1,12 @@
 # Netflix After Hours
 
-**Status:** Project in flight - concept and interactive prototype  
-**Current stage:** Phase 4 value case complete; Gate 4 positive case not demonstrated  
+**Status:** Completed independent product case — release closure in progress  
+**Current stage:** Gate 4 disposition approved; deployment-ready prototype verified  
 **Role:** AI Product Manager and product case author
 
 Netflix After Hours is an independent, portfolio-grade product innovation case exploring how a streaming service could improve the late-night viewing experience for people who fall asleep while watching.
 
-The concept combines manual sleep controls, gradual display dimming, sleep-point recovery, optional audio transitions, and later-stage wearable automation. The central product objective is a better viewer experience. The proposed economic pathways are subscription retention, premium feature conversion, and reduced unattended playback.
+The evidence-aligned pilot combines manual sleep controls, a cancellable dim-and-stop transition, a local sleep-point checkpoint, and explicit resume choices. The central product objective is a better viewer experience. Retention, conversion, and cost-reduction pathways remain hypotheses—not measured outcomes.
 
 > **Important:** This project was not produced for or with Netflix. It is not affiliated with, endorsed by, or based on confidential information from Netflix. Netflix names and marks belong to their respective owner.
 
@@ -16,9 +16,9 @@ Late-night viewers can wake several episodes ahead, lose their true stopping poi
 
 ## Current product position
 
-- The product is a concept with an interactive front-end prototype.
+- The product is a concept with a self-contained, deployable front-end prototype.
 - Existing percentages and financial outcomes are hypotheses or targets, not measured results.
-- No UAT, production deployment, or Netflix-customer validation has been completed.
+- No UAT, production-service implementation, or Netflix-customer validation has been completed.
 - Phase 2 used independent public evidence to test the concept baselines without implying Netflix-sponsored research.
 
 ## Proposed pilot direction
@@ -38,15 +38,15 @@ Wearable integrations and distributed multi-device synchronization remain later 
 
 | Area | Contents |
 | --- | --- |
-| `prototype/` | Interactive mobile, tablet, and TV concept prototype |
-| `docs/product/` | PRD, personas, and UI specifications |
-| `docs/technical/` | Architecture, offline sync, experimentation, and telemetry specifications |
-| `docs/delivery/` | Original and updated backlog, quality gates, and release governance |
-| `docs/strategy/` | Go-to-market and executive strategy materials |
+| `index.html` | Repository-deployable interactive prototype |
+| `prototype/` | Mirrored prototype entry for portfolio browsing |
+| `dist/` | Verified static deployment output |
+| `archive/original-concept-superseded/` | Original PRD, technical, delivery, strategy, and prototype artifacts |
 | `phase-1/` | Research charter, hypotheses, instruments, pilot scope, and economic assumptions |
 | `phase-2/` | Secondary-evidence charter, research synthesis, validation matrix, and revised recommendations |
 | `phase-3/` | Prototype refactor, expert review, feasibility evidence, and simulated measurement design |
 | `phase-4/` | Normalized value model, methodology, scenario results, and Gate 4 decision |
+| `DEPLOYMENT.md` | Verification and static-host deployment instructions |
 | `PROJECT_STATUS.md` | Current maturity, evidence position, and approved next phase |
 | `DISCLAIMER.md` | Independence, trademark, evidence, and use statements |
 
@@ -65,9 +65,13 @@ The current artifact set covers:
 9. Go-to-market strategy
 10. Executive communication
 
-## Current phase
+## Final decision
 
-Gate 3 was conditionally approved on 2026-11-08. Phase 4 has completed a formula-driven normalized value model. Physical stream-hours can be calculated under labelled assumptions, but a positive financial case is not demonstrated because marginal delivery value, implementation cost, and operating cost are unavailable. Retention and Premium contribution remain zero. None of these activities is represented as Netflix-customer validation or Netflix economics.
+Gate 4 disposition was approved on 2026-11-09. Physical stream-hours can be calculated under labelled assumptions, but a positive financial case is not demonstrated because marginal delivery value, implementation cost, and operating cost are unavailable. Retention and Premium contribution remain zero. Approval closes the evidence review; it does not approve a positive investment case.
+
+## Prototype verification
+
+The release has no external runtime dependencies and includes contract tests for build parity, release journeys, independence labelling, accessible dialog state, device controls, and reduced-motion support. Run `npm run check` before deployment. See [`DEPLOYMENT.md`](DEPLOYMENT.md).
 
 ## Author
 
