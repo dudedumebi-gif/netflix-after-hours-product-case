@@ -13,6 +13,7 @@
 | DEC-007 | The project will use a dedicated public GitHub repository and remain classified as a project in flight on the portfolio. | Approved |
 | DEC-008 | Gate 1 research questions, participant criteria, methods, evidence standards, and proposed decision thresholds are approved. | Approved - 2026-11-08 |
 | DEC-009 | Gate 2 is approved as a conditional pass. Phase 3 will proceed with the narrowed manual timer, controlled stop, checkpoint, and resume-choice pilot. Unsupported health, wearable, conversion, retention, and bandwidth claims remain excluded. | Approved - 2026-11-08 |
+| DEC-010 | Gate 3 is conditionally approved. Phase 4 may proceed while rendered-browser and assistive-technology verification remain explicit carry-forward conditions. | Approved - 2026-11-08 |
 
 ## Gate sequence
 
