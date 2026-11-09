@@ -36,12 +36,18 @@
 
 ## Remaining Phase 3 work
 
-- Browser-based interaction and responsive-layout verification;
-- keyboard and focus-order review;
-- contrast, reduced-motion, target-size, and screen-reader assessment;
-- cancellation-state and checkpoint failure-state design;
-- profile isolation, checkpoint expiry, and conflict resolution;
-- event dictionary and synthetic analysis model.
+- Rendered browser interaction remains unavailable in the execution environment.
+- Assistive-technology and measured contrast verification remain carry-forward conditions.
+- External prototype dependencies must be bundled or removed before any production-oriented implementation.
+
+Completed after the initial alignment review:
+
+- keyboard names, modal semantics, focus entry/return, Escape, and Tab containment;
+- reduced-motion handling and responsive-width bounds;
+- higher-contrast secondary-label treatment and live-region semantics;
+- checkpoint versioning, expiry, corrupt-state fallback, and reload rendering;
+- profile isolation, failure, and conflict design;
+- event dictionary and deterministic synthetic computation.
 
 ## Current conclusion
 
