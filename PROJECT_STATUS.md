@@ -11,7 +11,7 @@
 | Technical implementation | Evidence-aligned prototype and checkpoint-state demonstration; production feasibility unproven |
 | UAT | Not started |
 | Deployment readiness | Not ready |
-| Current phase | Phase 3 complete - Gate 3 conditional pass awaiting approval |
+| Current phase | Phase 4 complete - Gate 4 positive case not demonstrated |
 
 ## Confirmed product principles
 
@@ -36,12 +36,22 @@ Gate 2 was approved on 2026-11-08 as a conditional pass into a narrowed manual t
 - Evidence classification controls: complete.
 - Rendered-browser and assistive-technology verification: outstanding condition.
 
+## Phase 4 outcome
+
+- Normalized physical value model: complete.
+- Formula-driven financial and break-even structure: complete.
+- Retention contribution: zero in the conservative case.
+- Premium contribution: zero in the conservative case.
+- Marginal delivery value: unavailable.
+- Implementation and operating costs: unavailable.
+- Positive conservative net contribution: not demonstrated.
+
 ## Decision gates
 
 - **Gate 1:** Approved. Research questions, hypotheses, and evidence standards established.
 - **Gate 2:** Approved on 2026-11-08 as a conditional pass. The context is credible and addressable; frequency, severity, and product desirability remain unvalidated.
-- **Gate 3:** Conditional pass recommended. No critical source/design blocker was found; rendered-browser and assistive-technology verification remain outstanding.
-- **Gate 4:** Confirm a positive value case under conservative assumptions.
+- **Gate 3:** Conditionally approved on 2026-11-08. Rendered-browser and assistive-technology verification remain outstanding.
+- **Gate 4:** Not demonstrated. A positive financial case cannot be supported without internal marginal-value and cost inputs.
 
 ## Evidence integrity
 
