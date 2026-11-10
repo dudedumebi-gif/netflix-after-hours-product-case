@@ -17,6 +17,7 @@
 | DEC-011 | Gate 4 disposition is approved. The case may close as a completed concept-to-decision portfolio case, while the positive financial case remains not demonstrated and all missing internal evidence remains explicit. | Approved - 2026-11-09 |
 | DEC-012 | The pre-research concept artifact suite is superseded and retained under `archive/original-concept-superseded/`. The evidence-aligned release is the active portfolio version. | Approved - 2026-11-09 |
 | DEC-013 | Phase 5 is authorized as a future-evidence phase. The Jira backlog under DR-39 governs research authorization, validation, measurement, economic inputs, feasibility, accessibility, and a later Gate 5 decision. Gate 4 remains not demonstrated until new evidence supports a different conclusion. | Approved - 2026-11-10 |
+| DEC-014 | Freeze the completed portfolio case as v1.0 Final. Park Phase 5 and its Jira backlog until an authorized sponsor, recruitment route, and appropriate consent and governance controls exist. Preserve DEC-013 as the historical authorization; this decision governs present execution. | Approved - 2026-11-10 |
 
 ## Gate sequence
 
@@ -24,7 +25,7 @@
 - **Gate 2:** Confirm that the customer problem is sufficiently frequent, painful, and addressable.
 - **Gate 3:** Confirm that the pilot experience and proposed implementation have no critical usability, privacy, or feasibility blocker.
 - **Gate 4:** Determine whether a positive economic case can be demonstrated under conservative assumptions. Approved disposition: not demonstrated with available public evidence.
-- **Gate 5:** Reopen the product and investment decision only after the Phase 5 evidence backlog is materially complete.
+- **Gate 5:** Reopen the product and investment decision only after an authorized route activates the Phase 5 backlog and the required evidence becomes materially complete.
 
 ## Change control
 

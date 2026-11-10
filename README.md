@@ -1,7 +1,7 @@
 # Netflix After Hours
 
-**Status:** Completed independent product case — Phase 5 evidence backlog active  
-**Current stage:** Gate 4 disposition approved; Phase 5 authorized on 2026-11-10  
+**Status:** v1.0 Final — completed independent product case  
+**Current stage:** Released; Phase 5 future-evidence backlog parked  
 **Role:** AI Product Manager and product case author
 
 Netflix After Hours is an independent, portfolio-grade product innovation case exploring how a streaming service could improve the late-night viewing experience for people who fall asleep while watching.
@@ -46,7 +46,8 @@ Wearable integrations and distributed multi-device synchronization remain later 
 | `phase-2/` | Secondary-evidence charter, research synthesis, validation matrix, and revised recommendations |
 | `phase-3/` | Prototype refactor, expert review, feasibility evidence, and simulated measurement design |
 | `phase-4/` | Normalized value model, methodology, scenario results, and Gate 4 decision |
-| [Jira Phase 5 epic](https://dumsworkspace-37513198.atlassian.net/browse/DR-39) | Future evidence backlog and Gate 5 decision path |
+| `launch-package/` | Five-minute presentation, launch copy, interview story, and portfolio language |
+| [Jira Phase 5 epic](https://dumsworkspace-37513198.atlassian.net/browse/DR-39) | Deferred future-evidence backlog and Gate 5 decision path |
 | `DEPLOYMENT.md` | Verification and static-host deployment instructions |
 | `PROJECT_STATUS.md` | Current maturity, evidence position, and approved next phase |
 | `DISCLAIMER.md` | Independence, trademark, evidence, and use statements |
@@ -74,9 +75,11 @@ Gate 4 disposition was approved on 2026-11-09. Physical stream-hours can be calc
 
 The release has no external runtime dependencies and includes contract tests for build parity, release journeys, independence labelling, accessible dialog state, device controls, and reduced-motion support. Run `npm run check` before deployment. See [`DEPLOYMENT.md`](DEPLOYMENT.md).
 
+[Open the public interactive prototype](https://after-hours-product-prototype.dudedumebi.chatgpt.site)
+
 ## Phase 5
 
-Phase 5 was authorized on 2026-11-10 as a future-evidence phase. Its Jira epic contains 12 linked stories covering research governance, problem validation, usability, instrumentation, behavioral evidence, operational effect, authorized economic inputs, accessibility, deferred feasibility tracks, and the Gate 5 decision. Authorization does not change the Gate 4 conclusion or authorize Netflix-branded participant recruitment.
+Phase 5 was authorized on 2026-11-10 as a future-evidence phase, then parked on 2026-11-10 when the portfolio release was frozen as v1.0 Final. Its Jira epic retains 12 linked stories covering research governance, problem validation, usability, instrumentation, behavioral evidence, operational effect, authorized economic inputs, accessibility, deferred feasibility tracks, and the Gate 5 decision. Work may restart only with an authorized research sponsor, recruitment route, and appropriate consent and governance controls. This disposition does not change the Gate 4 conclusion or authorize Netflix-branded participant recruitment.
 
 ## Author
 

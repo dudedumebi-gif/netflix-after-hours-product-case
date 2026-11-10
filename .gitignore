@@ -1,9 +1,11 @@
 .openai/
 .codex-finalizer/
 .deck-build/
+.launch-build/
 tools/node_modules
 case-study/rendered/
 release-package/rendered/
 release-package/rendered-final/
 release-package/rendered-final-qa/
 release-package/pdf-qa/
+launch-package/rendered/
