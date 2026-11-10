@@ -4,14 +4,14 @@
 
 | Dimension | Current state |
 | --- | --- |
-| Portfolio classification | Completed independent product case (release closure in progress) |
+| Portfolio classification | Completed independent product case; Phase 5 evidence backlog active |
 | Product maturity | Evidence-aligned concept and deployment-ready interactive prototype |
 | Customer evidence | Context directionally supported by secondary evidence; product-specific outcomes unvalidated |
 | Quantitative outcomes | Hypothesis-based |
 | Technical implementation | Self-contained static prototype; production-service feasibility unproven |
 | UAT | Not started |
 | Deployment readiness | Prototype package ready for static sandbox deployment; not a production service |
-| Current phase | Gate 4 disposition approved; final release closure in progress |
+| Current phase | Phase 5 authorized; future evidence backlog active in Jira |
 
 ## Confirmed product principles
 
@@ -52,6 +52,17 @@ Gate 2 was approved on 2026-11-08 as a conditional pass into a narrowed manual t
 - **Gate 2:** Approved on 2026-11-08 as a conditional pass. The context is credible and addressable; frequency, severity, and product desirability remain unvalidated.
 - **Gate 3:** Conditionally approved on 2026-11-08. Rendered-browser and assistive-technology verification remain outstanding.
 - **Gate 4:** Disposition approved on 2026-11-09. The positive financial case remains not demonstrated because internal marginal-value and cost inputs are unavailable.
+- **Phase 5 authorization:** Approved on 2026-11-10. Work is limited to acquiring and governing the evidence required for a later Gate 5 decision.
+
+## Phase 5 backlog
+
+The controlling backlog is [DR-39 — Netflix After Hours: Phase 5 Future Evidence](https://dumsworkspace-37513198.atlassian.net/browse/DR-39). It contains 12 linked stories and preserves the following boundaries:
+
+- no participant outreach without research governance and recruitment authorization;
+- no Netflix affiliation or sponsorship implication;
+- no retention, conversion, savings, or ROI claim without measured and authorized evidence;
+- wearable and cross-device capabilities remain separate feasibility tracks; and
+- Gate 5 must decide among stop, revise/research, continue learning pilot, or seek implementation approval.
 
 ## Evidence integrity
 
